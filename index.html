@@ -51,7 +51,38 @@
         
         .content-section h2 {
             color: #764ba2;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .explore-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .explore-links a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .explore-links a:hover {
+            background: #764ba2;
+        }
+
+        .explore-links a.data {
+            background: #667eea;
+        }
+
+        .explore-links a.guides {
+            background: #764ba2;
         }
         
         footer {
@@ -75,8 +106,16 @@
         </div>
         
         <div class="content-section">
-            <h2>Getting Started</h2>
-            <p>Explore the repository to find detailed information and resources.</p>
+            <h2>Explore</h2>
+            <p>Browse our comprehensive collection of game information:</p>
+            <div class="explore-links">
+                <a href="./data/" class="data">Data</a>
+                <a href="./guides/" class="guides">Guides</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                <strong>Data:</strong> All game data organized in separate sections<br>
+                <strong>Guides:</strong> In-depth guides covering Skills, Gameplay, Weapons and Mods, and more
+            </p>
         </div>
         
         <footer>
