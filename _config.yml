@@ -1,0 +1,40 @@
+# Jekyll Configuration for Killing Floor 3 Data
+
+# Site settings
+title: Killing Floor 3 Data
+description: A comprehensive repository for Killing Floor 3 game data and information
+url: https://KiwiNotFruit.github.io
+baseurl: ""
+
+# Author information
+author:
+  name: KiwiNotFruit
+  email: ""
+
+# Build settings
+theme: jekyll-theme-cayman
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
+
+# Exclude files/folders from the build
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+
+# Collections
+collections:
+  data:
+    output: true
+    permalink: /data/:path/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Site settings for GitHub Pages
+github:
+  owner: KiwiNotFruit
+  repo: KiwiNotFruit.github.io
