@@ -1,0 +1,25 @@
+Remove the standalone "Mods (only)" page and consolidate mods into the Weapons page. Replace data/mods/index.html with a redirect to data/weapons.html and a short fallback message.
+
+Update data/weapons.html: add a small “class links” block linking to /data/classes/<class>.html, keep the #list container, and include weapons.js so the page lists weapons and shows their attached mods.
+
+Add data/weapons.json: a JSON array of weapon objects (id, name, class, image, description, stats, mods) used by weapons.html and the class pages.
+
+Create/update data/index.html: a Data landing page linking to ./weapons.html, ./mod-passive-abilities/, ./skills/, ./enemy-resistance/, etc.
+
+Create data/classes/*.html: per-class pages (commando, gunslinger, sharpshooter, engineer, medic, firebug, ninja). Each page should fetch ../weapons.json, filter weapons by weapon.class, and render weapon cards into #list. Class pages should reference images at ../assets/images/weapons/<filename>.
+
+Use relative paths consistently (class pages fetch ../weapons.json and image paths are ../assets/images/weapons/...).
+
+Replace data/mods/index.html with a meta-refresh redirect to ../weapons.html plus a fallback anchor and a short message explaining the change.
+
+Suggested commit message for the batch: "Apply class pages and weapons updates".
+
+Post-push verification steps:
+1. Confirm files exist on the main branch in the GitHub UI.
+2. Verify raw JSON is accessible: https://raw.githubusercontent.com/KiwiNotFruit/KiwiNotFruit.github.io/main/data/weapons.json
+3. Confirm pages load:
+   - https://KiwiNotFruit.github.io/data/weapons.html
+   - https://KiwiNotFruit.github.io/data/mods/ (should redirect to weapons)
+   - https://KiwiNotFruit.github.io/data/classes/commando.html (and other classes)
+
+If any error occurs (push/build/validation), report the exact error and the failing file(s).
