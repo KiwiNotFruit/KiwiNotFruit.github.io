@@ -1,0 +1,48 @@
+/* weapons.css
+   Simple styles for the Weapons list. Tweak colors, spacing or sizes as you like.
+   Files live in data/ so images should go in ../assets/images/weapons/ and referenced by filename in weapons.json.
+*/
+:root{
+  --gap:12px;
+  --card-bg:#fff;
+  --muted:#666;
+  --accent:#1565c0;
+  --radius:8px;
+  --shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.3;margin:0;background:#f5f7fb;color:#111}
+.wrapper{max-width:1100px;margin:28px auto;padding:20px}
+h1{margin:0 0 14px 0}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.controls input[type="search"]{flex:1;padding:10px;border:1px solid #ddd;border-radius:6px}
+.controls select{padding:8px;border-radius:6px;border:1px solid #ddd}
+.weapon-list{display:flex;flex-direction:column;gap:12px}
+.weapon-card{display:flex;gap:16px;background:var(--card-bg);padding:12px;border-radius:var(--radius);box-shadow:var(--shadow);align-items:flex-start}
+.weapon-image{width:220px;min-width:120px;height:120px;background:#eee;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.weapon-image img{width:100%;height:100%;object-fit:cover;display:block}
+.weapon-main{flex:1;min-width:0}
+.weapon-title{display:flex;align-items:center;gap:8px}
+.weapon-title h2{font-size:1.1rem;margin:0}
+.weapon-desc{color:var(--muted);margin:8px 0}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.stat{background:#f0f6ff;padding:6px 8px;border-radius:6px;border:1px solid #e1efff;color:#044b8b;font-weight:600}
+.mods{margin-top:8px}
+.mod-item{display:inline-block;background:#fafafa;border:1px solid #eee;padding:6px 8px;border-radius:6px;margin:4px 6px 4px 0;cursor:pointer}
+.mod-item a{color:inherit;text-decoration:none}
+.mod-item .mod-stats{font-size:0.85rem;color:var(--muted);display:block}
+.small-link{font-size:0.9rem;color:var(--accent);text-decoration:underline;cursor:pointer}
+.pagination{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:14px}
+.page-btn{padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+.page-btn:disabled{opacity:0.5;cursor:not-allowed}
+.page-info{font-size:0.95rem}
+
+/* Popover */
+.popover{position:fixed;z-index:60;display:none;min-width:220px;background:#fff;border:1px solid #ddd;padding:10px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+.popover.show{display:block}
+
+/* Responsive */
+@media (max-width:720px){
+  .weapon-card{flex-direction:column}
+  .weapon-image{width:100%;height:200px}
+}
