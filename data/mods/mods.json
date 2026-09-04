@@ -6,10 +6,7 @@
     "stats":{
       "Zoom":"1.1x",
       "Weight":"0.12 kg"
-    },
-    "passives":[
-      {"name":"Quick Acquire","description":"Reduces aim down sight time by 5%."}
-    ]
+    }
   },
   {
     "id":"extended-mag",
@@ -18,10 +15,7 @@
     "stats":{
       "Magazine":"+15 rounds",
       "Weight":"+0.2 kg"
-    },
-    "passives":[
-      {"name":"Sustain","description":"Slightly reduces chance to jam under heavy fire (flavor)."}
-    ]
+    }
   },
   {
     "id":"heavy-barrel",
@@ -30,10 +24,7 @@
     "stats":{
       "Range":"+12%",
       "Weight":"+0.9 kg"
-    },
-    "passives":[
-      {"name":"Stability","description":"Reduces recoil by 10% resulting in steadier follow-up shots."}
-    ]
+    }
   },
   {
     "id":"muzzle-brake",
@@ -42,10 +33,7 @@
     "stats":{
       "Recoil":"-18%",
       "Noise":"+10%"
-    },
-    "passives":[
-      {"name":"Counterforce","description":"Reduces vertical recoil specially on the first two shots after firing."}
-    ]
+    }
   },
   {
     "id":"suppressor",
@@ -54,10 +42,7 @@
     "stats":{
       "Sound":"-100%",
       "Range":"-5%"
-    },
-    "passives":[
-      {"name":"Concealment","description":"Firing the weapon is less likely to reveal shooter position to AI sensors (flavor)."}
-    ]
+    }
   },
   {
     "id":"laser-pointer",
@@ -66,9 +51,6 @@
     "stats":{
       "Hip Accuracy":"+6%",
       "Weight":"0.05 kg"
-    },
-    "passives":[
-      {"name":"Aim Assist","description":"Slightly improves first-shot hip-fire accuracy when moving."}
-    ]
+    }
   }
 ]
