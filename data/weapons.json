@@ -5,6 +5,7 @@
     "dosh": 1200,
     "image":"m12-commando.png",
     "description":"A reliable mid-range assault rifle used by frontline commandos. Balanced accuracy and fire rate.",
+    "class":"Commando",
     "stats":{
       "Damage":"34",
       "Fire Rate":"680 RPM",
@@ -22,6 +23,7 @@
     "dosh": 2500,
     "image":"sr50-marksman.jpg",
     "description":"Semi-automatic marksman rifle for long range engagements. High damage per shot.",
+    "class":"Sharpshooter",
     "stats":{
       "Damage":"82",
       "Fire Rate":"240 RPM",
@@ -39,6 +41,7 @@
     "dosh": 400,
     "image":"viper-pistol.png",
     "description":"Compact sidearm favored by specialists for its light weight and fast handling.",
+    "class":"Gunslinger",
     "stats":{
       "Damage":"22",
       "Fire Rate":"900 RPM",
