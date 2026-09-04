@@ -1,6 +1,7 @@
 /* mods.js
    Loads mods.json and renders a searchable, paginated list of mods.
-   Each mod has an id (used for anchors), name, description, stats, and optional passive abilities.
+   Each mod has an id (used for anchors), name, description, stats, slot and dosh, and optional passive abilities.
+   This file now points to the canonical /data/mods.json so both the weapons page and mods page share the same source.
 */
 (() => {
   const listEl = document.getElementById('list');
@@ -16,10 +17,11 @@
 
   async function load(){
     try{
-      const res = await fetch('mods.json');
+      // Fetch the canonical mods file from /data/mods.json
+      const res = await fetch('/data/mods.json');
       mods = await res.json();
     }catch(e){
-      console.error('Failed to load mods.json', e);
+      console.error('Failed to load /data/mods.json', e);
       mods = [];
     }
     filtered = mods.slice();
@@ -58,6 +60,15 @@
       const h2 = document.createElement('h2');
       h2.textContent = m.name;
       title.appendChild(h2);
+
+      // Dosh display
+      const price = document.createElement('div');
+      price.className = 'weapon-price';
+      price.style.marginLeft = 'auto';
+      price.style.fontWeight = '700';
+      price.style.color = '#0b5aa8';
+      if(typeof m.dosh === 'number') price.textContent = 'Dosh: ' + Number(m.dosh).toLocaleString();
+      title.appendChild(price);
 
       const desc = document.createElement('div');
       desc.className = 'weapon-desc';
@@ -117,7 +128,7 @@
   }
 
   function escapeHtml(s){
-    return String(s).replace(/[&<>\"]/g, (c)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c] || c));
+    return String(s).replace(/[&<>\\"]/g, (c)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c] || c));
   }
 
   function applySearch(){
