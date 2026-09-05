@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Pounded",
+    "description": "All Zeds have greatly increased knockback and stagger power, sending players flying with every hit.",
+    "source": "Mutation Wave"
+  },
+  {
+    "name": "Iron Skin",
+    "description": "Zeds gain significantly increased armor and damage resistance, requiring focused fire to bring them down.",
+    "source": "Mutation Wave"
+  }
+]
