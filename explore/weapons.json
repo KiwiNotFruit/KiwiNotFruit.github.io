@@ -7,8 +7,8 @@
     "description":"A reliable mid-range assault rifle used by frontline commandos. Balanced accuracy and fire rate.",
     "class":"Commando",
     "damageTypes":["Ballistic","Incendiary"],
-    "primary":{"ammo":"5.56mm Rounds","damage":34,"magazine":30,"capacity":240},
-    "secondary":{"ammo":"Incendiary Rounds","damage":12,"magazine":10,"capacity":40},
+    "primary":{"damage":34,"magazine":30,"capacity":240},
+    "secondary":{"damage":12,"magazine":10,"capacity":40},
     "stats":{
       "Damage":"34",
       "Fire Rate":"680 RPM"
@@ -26,8 +26,8 @@
     "description":"Semi-automatic marksman rifle for long range engagements. High damage per shot.",
     "class":"Sharpshooter",
     "damageTypes":["Ballistic","Cold"],
-    "primary":{"ammo":"7.62mm Rounds","damage":82,"magazine":10,"capacity":80},
-    "secondary":{"ammo":"Cryo Rounds","damage":40,"magazine":5,"capacity":20},
+    "primary":{"damage":82,"magazine":10,"capacity":80},
+    "secondary":{"damage":40,"magazine":5,"capacity":20},
     "stats":{
       "Damage":"82",
       "Fire Rate":"240 RPM"
@@ -45,8 +45,8 @@
     "description":"Compact sidearm favored by specialists for its light weight and fast handling.",
     "class":"Gunslinger",
     "damageTypes":["Ballistic","Biological"],
-    "primary":{"ammo":"9mm Rounds","damage":22,"magazine":15,"capacity":120},
-    "secondary":{"ammo":"Toxin Rounds","damage":8,"magazine":8,"capacity":32},
+    "primary":{"damage":22,"magazine":15,"capacity":120},
+    "secondary":{"damage":8,"magazine":8,"capacity":32},
     "stats":{
       "Damage":"22",
       "Fire Rate":"900 RPM"
