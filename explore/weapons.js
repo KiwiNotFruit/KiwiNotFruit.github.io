@@ -108,6 +108,31 @@
       desc.className = 'weapon-desc';
       desc.textContent = w.description || '';
 
+      // Damage types
+      const damageTypesWrap = document.createElement('div');
+      damageTypesWrap.className = 'damage-types';
+      if(Array.isArray(w.damageTypes) && w.damageTypes.length){
+        const dtLabel = document.createElement('span');
+        dtLabel.className = 'damage-types-label';
+        dtLabel.textContent = 'Damage Types:';
+        damageTypesWrap.appendChild(dtLabel);
+        for(const dt of w.damageTypes){
+          const badge = document.createElement('span');
+          badge.className = 'damage-type';
+          badge.dataset.damageType = dt;
+          // Icon hook: add an empty icon span so an icon can be attached later via CSS/JS per damage type
+          const icon = document.createElement('span');
+          icon.className = 'damage-type-icon';
+          icon.setAttribute('aria-hidden','true');
+          badge.appendChild(icon);
+          const txt = document.createElement('span');
+          txt.className = 'damage-type-name';
+          txt.textContent = dt;
+          badge.appendChild(txt);
+          damageTypesWrap.appendChild(badge);
+        }
+      }
+
       // Stats
       const statsWrap = document.createElement('div');
       statsWrap.className = 'stats';
@@ -119,6 +144,12 @@
           statsWrap.appendChild(s);
         }
       }
+
+      // Primary / Secondary ammo & damage
+      const fireModesWrap = document.createElement('div');
+      fireModesWrap.className = 'fire-modes';
+      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary));
+      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary));
 
       // Mods
       const modsWrap = document.createElement('div');
@@ -185,18 +216,27 @@
         }
       }
 
+      // Mod bonuses text area (updated when mods are selected/deselected)
+      const bonusWrap = document.createElement('div');
+      bonusWrap.className = 'mod-bonuses';
+      bonusWrap.setAttribute('aria-live','polite');
+
       main.appendChild(title);
       main.appendChild(desc);
+      main.appendChild(damageTypesWrap);
       main.appendChild(statsWrap);
+      main.appendChild(fireModesWrap);
       main.appendChild(modsWrap);
+      main.appendChild(bonusWrap);
 
       card.appendChild(imgWrap);
       card.appendChild(main);
 
       listEl.appendChild(card);
 
-      // After appending, update the displayed price based on persisted selection
+      // After appending, update the displayed price and mod bonuses based on persisted selection
       updateWeaponPriceDisplay(w, card);
+      updateWeaponModBonuses(w, card);
     }
 
     pageInfo.textContent = `Page ${page} of ${pages} (${total} weapons)`;
@@ -224,7 +264,10 @@
       if(el) el.classList.remove('selected');
       saveSelections(selections);
       const weapon = weapons.find(w=>w.id===weaponId);
-      if(weapon) updateWeaponPriceDisplay(weapon, cardEl);
+      if(weapon){
+        updateWeaponPriceDisplay(weapon, cardEl);
+        updateWeaponModBonuses(weapon, cardEl);
+      }
       return;
     }
 
@@ -249,7 +292,10 @@
 
     saveSelections(selections);
     const weapon = weapons.find(w=>w.id===weaponId);
-    if(weapon) updateWeaponPriceDisplay(weapon, cardEl);
+    if(weapon){
+      updateWeaponPriceDisplay(weapon, cardEl);
+      updateWeaponModBonuses(weapon, cardEl);
+    }
   }
 
   function updateWeaponPriceDisplay(weapon, cardEl){
@@ -267,6 +313,58 @@
 
   function formatDosh(n){
     try{ return 'Dosh: ' + Number(n).toLocaleString(); }catch(e){ return 'Dosh: ' + n; }
+  }
+
+  function buildFireModeEl(label, mode){
+    const wrap = document.createElement('div');
+    wrap.className = 'fire-mode';
+    const head = document.createElement('div');
+    head.className = 'fire-mode-label';
+    head.textContent = label;
+    wrap.appendChild(head);
+    const stats = document.createElement('div');
+    stats.className = 'fire-mode-stats';
+    const fields = [['Ammo', mode.ammo], ['Damage', mode.damage], ['Magazine', mode.magazine], ['Capacity', mode.capacity]];
+    for(const [k,v] of fields){
+      if(v === undefined || v === null || v === '') continue;
+      const s = document.createElement('span');
+      s.className = 'fire-mode-stat';
+      s.textContent = `${k}: ${v}`;
+      stats.appendChild(s);
+    }
+    wrap.appendChild(stats);
+    return wrap;
+  }
+
+  // Renders the combined bonus text of all selected mods at the bottom of a weapon card.
+  function updateWeaponModBonuses(weapon, cardEl){
+    const bonusEl = cardEl.querySelector('.mod-bonuses');
+    if(!bonusEl) return;
+    const selections = loadSelections();
+    const sel = Array.isArray(selections[weapon.id]) ? selections[weapon.id] : [];
+    bonusEl.innerHTML = '';
+    const bonuses = [];
+    for(const id of sel){
+      const m = modsById[id];
+      if(m && m.stats){
+        for(const [k,v] of Object.entries(m.stats)){
+          bonuses.push(`${k} ${v}`);
+        }
+      }
+    }
+    if(bonuses.length === 0){
+      bonusEl.classList.remove('has-bonuses');
+      return;
+    }
+    const label = document.createElement('span');
+    label.className = 'mod-bonuses-label';
+    label.textContent = 'Mod Bonuses: ';
+    bonusEl.appendChild(label);
+    const text = document.createElement('span');
+    text.className = 'mod-bonuses-text';
+    text.textContent = bonuses.join(', ');
+    bonusEl.appendChild(text);
+    bonusEl.classList.add('has-bonuses');
   }
 
   // Popover helpers

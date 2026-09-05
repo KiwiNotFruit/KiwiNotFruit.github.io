@@ -92,3 +92,28 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .mod-item, .weapon-price{
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 }
+
+/* Damage types */
+.damage-types{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.damage-types-label{font-size:0.9rem;color:var(--accent);font-weight:600}
+.damage-type{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #2a2a2a;padding:4px 8px;border-radius:6px;color:#fff;font-weight:600}
+.damage-type-icon{display:inline-block;width:14px;height:14px;border-radius:50%;background:#2a2a2a;flex:0 0 auto}
+/* Per-type icon hooks: set background-image or color per damage type here later, e.g.
+   .damage-type[data-damage-type="Cold"] .damage-type-icon{background:#66ccff}
+*/
+.damage-type[data-damage-type="Cold"] .damage-type-icon{background:#66ccff}
+.damage-type[data-damage-type="Ballistic"] .damage-type-icon{background:#c9a227}
+.damage-type[data-damage-type="Biological"] .damage-type-icon{background:#39d353}
+.damage-type[data-damage-type="Incendiary"] .damage-type-icon{background:#ff7a1a}
+
+/* Primary / Secondary fire modes */
+.fire-modes{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.fire-mode{background:#141414;border:1px solid #2a2a2a;border-radius:6px;padding:8px 10px;min-width:200px;flex:1}
+.fire-mode-label{font-size:0.85rem;color:var(--accent);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em}
+.fire-mode-stats{display:flex;gap:8px;flex-wrap:wrap}
+.fire-mode-stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:4px 8px;color:#fff;font-weight:600;font-size:0.9rem}
+
+/* Mod bonuses summary at bottom of card */
+.mod-bonuses{display:none;margin-top:8px;background:#1a0000;border:1px solid var(--accent);border-radius:6px;padding:6px 10px;color:#ffb3b3;font-size:0.9rem}
+.mod-bonuses.has-bonuses{display:block}
+.mod-bonuses-label{color:var(--accent);font-weight:700}
