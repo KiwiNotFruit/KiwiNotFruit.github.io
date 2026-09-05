@@ -8,7 +8,11 @@
     "stats":{
       "Zoom":"1.1x",
       "Weight":"0.12 kg"
-    }
+    },
+    "passives":[
+      {"name":"Quick Acquire","description":"Reduces ADS time by 5%."},
+      {"name":"Clear Sight","description":"Slightly reduces scope sway while aiming."}
+    ]
   },
   {
     "id":"extended-mag",
@@ -19,7 +23,10 @@
     "stats":{
       "Magazine":"+15 rounds",
       "Weight":"+0.2 kg"
-    }
+    },
+    "passives":[
+      {"name":"Steady Supply","description":"Increases reserve ammo by 10%."}
+    ]
   },
   {
     "id":"heavy-barrel",
@@ -30,7 +37,10 @@
     "stats":{
       "Range":"+12%",
       "Weight":"+0.9 kg"
-    }
+    },
+    "passives":[
+      {"name":"Longshot","description":"Reduces damage falloff at long range by 8%."}
+    ]
   },
   {
     "id":"muzzle-brake",
@@ -41,7 +51,10 @@
     "stats":{
       "Recoil":"-18%",
       "Noise":"+10%"
-    }
+    },
+    "passives":[
+      {"name":"Controlled Burst","description":"First 5 shots of each burst have 10% less recoil."}
+    ]
   },
   {
     "id":"suppressor",
@@ -52,7 +65,10 @@
     "stats":{
       "Sound":"-100%",
       "Range":"-5%"
-    }
+    },
+    "passives":[
+      {"name":"Ghost","description":"Firing does not reveal your position on enemy radar."}
+    ]
   },
   {
     "id":"laser-pointer",
@@ -63,6 +79,9 @@
     "stats":{
       "Hip Accuracy":"+6%",
       "Weight":"0.05 kg"
-    }
+    },
+    "passives":[
+      {"name":"Snap Aim","description":"Improves hip-fire accuracy by an extra 3% while moving."}
+    ]
   }
 ]
