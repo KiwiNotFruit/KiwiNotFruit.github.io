@@ -1,1 +1,51 @@
-y
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mod Passive Abilities</title>
+  <link rel="stylesheet" href="../weapons.css">
+</head>
+<body>
+  <main class="wrapper">
+    <h1>Mod Passive Abilities</h1>
+    <p>List of passive abilities for mods (text only).</p>
+
+    <div id="list" class="weapon-list" aria-live="polite"></div>
+  </main>
+
+  <script>
+    // Load ../mods/mods.json and aggregate passives
+    (async ()=>{
+      const listEl = document.getElementById('list');
+      try{
+        const res = await fetch('../mods/mods.json');
+        const mods = await res.json();
+        const passives = [];
+        for(const m of mods){
+          if(Array.isArray(m.passives)){
+            for(const p of m.passives){
+              passives.push({modId: m.id, modName: m.name, name: p.name, description: p.description});
+            }
+          }
+        }
+        if(passives.length===0){ listEl.innerHTML = '<p>No passive abilities found.</p>'; return; }
+        // render
+        for(const p of passives){
+          const card = document.createElement('article');
+          card.className = 'weapon-card';
+          const main = document.createElement('div');
+          main.className = 'weapon-main';
+          const title = document.createElement('div'); title.className = 'weapon-title';
+          const h2 = document.createElement('h2'); h2.textContent = p.name; title.appendChild(h2);
+          const meta = document.createElement('div'); meta.className = 'weapon-desc'; meta.textContent = `Source mod: ${p.modName}`;
+          const desc = document.createElement('div'); desc.style.marginTop='6px'; desc.style.color='#444'; desc.textContent = p.description;
+          main.appendChild(title); main.appendChild(meta); main.appendChild(desc); card.appendChild(main); listEl.appendChild(card);
+        }
+      }catch(err){
+        console.error(err); listEl.innerHTML = '<p>Failed to load passive abilities.</p>';
+      }
+    })();
+  </script>
+</body>
+</html>
