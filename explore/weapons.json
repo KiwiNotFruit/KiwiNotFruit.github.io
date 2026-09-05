@@ -10,7 +10,6 @@
     "primary":{"damage":34,"magazine":30,"capacity":240},
     "secondary":{"damage":12,"magazine":10,"capacity":40},
     "stats":{
-      "Damage":"34",
       "Fire Rate":"680 RPM"
     },
     "mods":[
@@ -29,7 +28,6 @@
     "primary":{"damage":82,"magazine":10,"capacity":80},
     "secondary":{"damage":40,"magazine":5,"capacity":20},
     "stats":{
-      "Damage":"82",
       "Fire Rate":"240 RPM"
     },
     "mods":[
@@ -48,7 +46,6 @@
     "primary":{"damage":22,"magazine":15,"capacity":120},
     "secondary":{"damage":8,"magazine":8,"capacity":32},
     "stats":{
-      "Damage":"22",
       "Fire Rate":"900 RPM"
     },
     "mods":[
