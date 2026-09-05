@@ -1,5 +1,5 @@
 /* weapons.js
-   Framework-free script to load weapons.json and mods.json, render cards, support search (name-only), pagination, popovers,
+   Framework-free script to load weapons.json and mods.json, render cards, support class and name search, pagination, popovers,
    and client-side mod selection that updates weapon Dosh totals instantly.
 
    Behavior:
@@ -26,6 +26,7 @@
   let page = 1;
   const perPage = 10;
   let selectedClass = '';
+  const weaponClasses = new Set(Array.from(classLinks, (link) => link.dataset.class));
 
   const STORAGE_KEY = 'weaponModSelections_v1';
 
@@ -54,8 +55,8 @@
       mods = [];
       modsById = {};
     }
-    filtered = weapons.slice();
-    render();
+    selectClassFromHash();
+    applySearch();
   }
 
   function render(){
@@ -312,7 +313,7 @@
     return String(s).replace(/(["'\\:\[\]#.])/g,'\\$1');
   }
 
-  // Search by name only (case-insensitive)
+  // Filter by selected class and name (case-insensitive)
   function applySearch(){
     const q = (searchEl.value || '').trim().toLowerCase();
     filtered = weapons.filter((weapon) =>
@@ -323,15 +324,24 @@
     render();
   }
 
+  function selectClassFromHash(){
+    const className = new URLSearchParams(location.hash.slice(1)).get('class');
+    selectedClass = weaponClasses.has(className) ? className : '';
+  }
+
   // Events
   searchEl.addEventListener('input', ()=>{ applySearch(); });
   classLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
-      selectedClass = link.dataset.class;
       history.replaceState(null, '', link.hash);
+      selectClassFromHash();
       applySearch();
     });
+  });
+  window.addEventListener('hashchange', () => {
+    selectClassFromHash();
+    applySearch();
   });
   prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); } });
   nextBtn.addEventListener('click', ()=>{ page++; render(); });

@@ -23,7 +23,7 @@ Quick links (GitHub Pages)
 Where files live (main branch)
 - explore/weapons.html  — Weapons listing page (HTML)
 - explore/weapons.css   — Shared styles for weapons & mods pages
-- explore/weapons.js    — Client-side script for weapons page (search, pagination, popovers)
+- explore/weapons.js    — Client-side script for weapons page (class/name filtering, pagination, popovers)
 - explore/weapons.json  — Weapon data (edit to add/remove weapons)
 
 - explore/mods/index.html — Mods listing page (HTML)
@@ -81,7 +81,7 @@ Images
 - Recommended starting size: 800×600 or 400×300. The layout crops/scales images; larger images scale down cleanly.
 
 Search and navigation behavior
-- Weapons page search filters by weapon name only (case-insensitive).
+- Weapons page links filter by class; its search further filters the selected class by weapon name (case-insensitive).
 - Mods page search looks in name, description and passive ability text.
 - Mod links from weapon entries point to /explore/mods/#<id> and will scroll to the mod.
 - Mods show passive abilities (text only) and do not require images.
@@ -90,9 +90,7 @@ Popovers and links
 - Mods shown in weapons list have hover (desktop) and click (touch) popovers with short details. Links still open in a new tab.
 
 Tips
-- If you prefer class-based organization, you can either:
-  - create separate JSON files per class and separate HTML pages (e.g., explore/commando-weapons.json + explore/commando.html), or
-  - add a "class" field to each weapon in weapons.json and add a single dropdown filter on weapons.html.
+- Add a `class` field to each weapon in weapons.json to include it in the matching class quick link on the weapons page.
 - Keep keys consistent in stats objects to make the display predictable.
 - Use the GitHub web UI to quickly edit JSON files and upload images.
 
