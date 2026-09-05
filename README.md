@@ -88,11 +88,3 @@ Search and navigation behavior
 
 Popovers and links
 - Mods shown in weapons list have hover (desktop) and click (touch) popovers with short details. Links still open in a new tab.
-
-Tips
-- Add a `class` field to each weapon in weapons.json to include it in the matching class quick link on the weapons page.
-- Keep keys consistent in stats objects to make the display predictable.
-- Use the GitHub web UI to quickly edit JSON files and upload images.
-
-Need changes?
-- I can add a README section with a JSON schema, add a class filter, change search behavior, or adjust layout/image sizes. Tell me which and I will update the repo.
