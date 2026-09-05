@@ -12,14 +12,16 @@
 
     <div class="controls">
       <input id="search" type="search" placeholder="Search weapons by name..." aria-label="Search weapons by name">
-      <label for="perPage">Per page:</label>
-      <select id="perPage" aria-label="Weapons per page">
-        <option value="6">6</option>
-        <option value="8">8</option>
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
-      </select>
     </div>
+    <nav class="class-links" aria-label="Weapon classes">
+      <a href="#class=Commando" data-class="Commando">Commando</a>
+      <a href="#class=Engineer" data-class="Engineer">Engineer</a>
+      <a href="#class=Sharpshooter" data-class="Sharpshooter">Sharpshooter</a>
+      <a href="#class=Gunslinger" data-class="Gunslinger">Gunslinger</a>
+      <a href="#class=Firebug" data-class="Firebug">Firebug</a>
+      <a href="#class=Field%20Medic" data-class="Field Medic">Field Medic</a>
+      <a href="#class=Ninja" data-class="Ninja">Ninja</a>
+    </nav>
 
     <div id="list" class="weapon-list" aria-live="polite"></div>
 

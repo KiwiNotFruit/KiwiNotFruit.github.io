@@ -1,5 +1,5 @@
 /* weapons.js
-   Framework-free script to load weapons.json and mods.json, render cards, support search (name-only), pagination, popovers,
+   Framework-free script to load weapons.json and mods.json, render cards, support class and name search, pagination, popovers,
    and client-side mod selection that updates weapon Dosh totals instantly.
 
    Behavior:
@@ -13,7 +13,7 @@
 (() => {
   const listEl = document.getElementById('list');
   const searchEl = document.getElementById('search');
-  const perPageEl = document.getElementById('perPage');
+  const classLinks = document.querySelectorAll('.class-links a');
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
   const pageInfo = document.getElementById('pageInfo');
@@ -24,7 +24,9 @@
   let modsById = {};
   let filtered = [];
   let page = 1;
-  let perPage = parseInt(perPageEl.value,10) || 10;
+  const perPage = 10;
+  let selectedClass = '';
+  const weaponClasses = new Set(Array.from(classLinks, (link) => link.dataset.class));
 
   const STORAGE_KEY = 'weaponModSelections_v1';
 
@@ -53,12 +55,11 @@
       mods = [];
       modsById = {};
     }
-    filtered = weapons.slice();
-    render();
+    selectClassFromHash();
+    applySearch();
   }
 
   function render(){
-    perPage = parseInt(perPageEl.value,10) || 10;
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / perPage));
     if(page>pages) page = pages;
@@ -201,6 +202,9 @@
     pageInfo.textContent = `Page ${page} of ${pages} (${total} weapons)`;
     prevBtn.disabled = page <= 1;
     nextBtn.disabled = page >= pages;
+    classLinks.forEach((link) => {
+      link.toggleAttribute('aria-current', link.dataset.class === selectedClass);
+    });
   }
 
   function toggleModForWeapon(weaponId, modId, cardEl){
@@ -309,21 +313,36 @@
     return String(s).replace(/(["'\\:\[\]#.])/g,'\\$1');
   }
 
-  // Search by name only (case-insensitive)
+  // Filter by selected class and name (case-insensitive)
   function applySearch(){
     const q = (searchEl.value || '').trim().toLowerCase();
-    if(!q){
-      filtered = weapons.slice();
-    }else{
-      filtered = weapons.filter(w => (w.name||'').toLowerCase().includes(q));
-    }
+    filtered = weapons.filter((weapon) =>
+      (!selectedClass || weapon.class === selectedClass) &&
+      (!q || (weapon.name || '').toLowerCase().includes(q))
+    );
     page = 1;
     render();
   }
 
+  function selectClassFromHash(){
+    const className = new URLSearchParams(location.hash.slice(1)).get('class');
+    selectedClass = weaponClasses.has(className) ? className : '';
+  }
+
   // Events
   searchEl.addEventListener('input', ()=>{ applySearch(); });
-  perPageEl.addEventListener('change', ()=>{ page = 1; render(); });
+  classLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      history.replaceState(null, '', link.hash);
+      selectClassFromHash();
+      applySearch();
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    selectClassFromHash();
+    applySearch();
+  });
   prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); } });
   nextBtn.addEventListener('click', ()=>{ page++; render(); });
 
