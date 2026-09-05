@@ -1,43 +1,43 @@
-# Killing Floor 3 Data and Guides
+# Killing Floor 3 Data
 
-A simple information and guide website for Killing Floor 3.
+A simple information website for Killing Floor 3.
 
 ## Contents
 
-This site contains data, guides, and information related to Killing Floor 3.
+This site contains data and information related to Killing Floor 3.
 
 ## To Do
 
-Add search bar in data sections
+Add search bar in explore sections
 
 ---
 
-## Data pages (Weapons & Mods)
+## Explore pages (Weapons & Mods)
 
 These pages store editable weapon and mod data used by the site.
 
 Quick links (GitHub Pages)
-- Weapons list: /data/weapons.html
-- Mods list: /data/mods.html
+- Weapons list: /explore/weapons.html
+- Mods list: /explore/mods.html
 
 Where files live (main branch)
-- data/weapons.html  — Weapons listing page (HTML)
-- data/weapons.css   — Shared styles for weapons & mods pages
-- data/weapons.js    — Client-side script for weapons page (search, pagination, popovers)
-- data/weapons.json  — Weapon data (edit to add/remove weapons)
+- explore/weapons.html  — Weapons listing page (HTML)
+- explore/weapons.css   — Shared styles for weapons & mods pages
+- explore/weapons.js    — Client-side script for weapons page (search, pagination, popovers)
+- explore/weapons.json  — Weapon data (edit to add/remove weapons)
 
-- data/mods.html     — Mods listing page (HTML)
-- data/mods.js       — Client-side script for mods page (search, pagination)
-- data/mods.json     — Mods data (edit to add/remove mods and passive abilities)
+- explore/mods.html     — Mods listing page (HTML)
+- explore/mods.js       — Client-side script for mods page (search, pagination)
+- explore/mods.json     — Mods data (edit to add/remove mods and passive abilities)
 
 - assets/images/weapons/ — place weapon images here (PNG/JPG). Refer to the filename in weapons.json.
 
 Preview URL (GitHub Pages)
-- https://kiwinotfruit.github.io/data/weapons.html
-- https://kiwinotfruit.github.io/data/mods.html
+- https://kiwinotfruit.github.io/explore/weapons.html
+- https://kiwinotfruit.github.io/explore/mods.html
 
 How to edit weapon data
-- Edit data/weapons.json. Each weapon is an object with fields:
+- Edit explore/weapons.json. Each weapon is an object with fields:
   - id: unique id (string)
   - name: display name
   - image: filename (place file in assets/images/weapons/)
@@ -54,12 +54,12 @@ Example weapon entry (JSON):
   "description": "A short description...",
   "stats": { "Damage": "40", "Fire Rate": "600 RPM" },
   "mods": [
-    { "name": "Red Dot Sight", "short": "+acc", "description": "Improves accuracy.", "stats": { "Accuracy": "+8%" }, "link": "/data/mods.html#red-dot-sight" }
+    { "name": "Red Dot Sight", "short": "+acc", "description": "Improves accuracy.", "stats": { "Accuracy": "+8%" }, "link": "/explore/mods.html#red-dot-sight" }
   ]
 }
 
 How to edit mod data
-- Edit data/mods.json. Each mod includes:
+- Edit explore/mods.json. Each mod includes:
   - id: used as the anchor (e.g., "red-dot-sight")
   - name
   - description
@@ -83,7 +83,7 @@ Images
 Search and navigation behavior
 - Weapons page search filters by weapon name only (case-insensitive).
 - Mods page search looks in name, description and passive ability text.
-- Mod links from weapon entries point to /data/mods.html#<id> and will scroll to the mod.
+- Mod links from weapon entries point to /explore/mods.html#<id> and will scroll to the mod.
 - Mods show passive abilities (text only) and do not require images.
 
 Popovers and links
@@ -91,7 +91,7 @@ Popovers and links
 
 Tips
 - If you prefer class-based organization, you can either:
-  - create separate JSON files per class and separate HTML pages (e.g., data/commando-weapons.json + data/commando.html), or
+  - create separate JSON files per class and separate HTML pages (e.g., explore/commando-weapons.json + explore/commando.html), or
   - add a "class" field to each weapon in weapons.json and add a single dropdown filter on weapons.html.
 - Keep keys consistent in stats objects to make the display predictable.
 - Use the GitHub web UI to quickly edit JSON files and upload images.

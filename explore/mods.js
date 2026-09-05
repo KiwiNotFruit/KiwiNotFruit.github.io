@@ -1,7 +1,7 @@
 /* mods.js
    Loads mods.json and renders a searchable, paginated list of mods.
    Each mod has an id (used for anchors), name, description, stats, slot and dosh, and optional passive abilities.
-   This file now points to the canonical /data/mods.json so both the weapons page and mods page share the same source.
+   This file now points to the canonical /explore/mods.json so both the weapons page and mods page share the same source.
 */
 (() => {
   const listEl = document.getElementById('list');
@@ -17,11 +17,11 @@
 
   async function load(){
     try{
-      // Fetch the canonical mods file from /data/mods.json
-      const res = await fetch('/data/mods.json');
+      // Fetch the canonical mods file from /explore/mods.json
+      const res = await fetch('/explore/mods.json');
       mods = await res.json();
     }catch(e){
-      console.error('Failed to load /data/mods.json', e);
+      console.error('Failed to load /explore/mods.json', e);
       mods = [];
     }
     filtered = mods.slice();

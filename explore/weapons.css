@@ -1,6 +1,6 @@
 /* weapons.css
    Simple styles for the Weapons list. Tweak colors, spacing or sizes as you like.
-   Files live in data/ so images should go in ../assets/images/weapons/ and referenced by filename in weapons.json.
+   Files live in explore/ so images should go in ../assets/images/weapons/ and referenced by filename in weapons.json.
 */
 :root{
   --gap:12px;

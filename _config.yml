@@ -25,9 +25,9 @@ exclude:
 
 # Collections
 collections:
-  data:
+  explore:
     output: true
-    permalink: /data/:path/
+    permalink: /explore/:path/
 
 # Plugins
 plugins:
