@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mutation Waves</title>
+  <link rel="stylesheet" href="../weapons.css">
+  <style>
+    .weapon-desc { color: #cfcfcf !important; }
+    .passive-source { color: #ff2b2b; font-weight: 600; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+    <h1>Mutation Waves</h1>
+    <p>Special modifier waves that alter Zed behavior and abilities.</p>
+
+    <div id="list" class="weapon-list" aria-live="polite"></div>
+  </main>
+
+  <script>
+    (async ()=>{
+      const listEl = document.getElementById('list');
+      try{
+        const res = await fetch('/explore/mutation-waves.json');
+        const waves = await res.json();
+        if(!Array.isArray(waves) || waves.length===0){
+          listEl.innerHTML = '<p>No mutation waves found.</p>';
+          return;
+        }
+        for(const w of waves){
+          const card = document.createElement('article');
+          card.className = 'weapon-card';
+          const main = document.createElement('div');
+          main.className = 'weapon-main';
+          const title = document.createElement('div');
+          title.className = 'weapon-title';
+          const h2 = document.createElement('h2');
+          h2.textContent = w.name;
+          title.appendChild(h2);
+          const source = document.createElement('div');
+          source.className = 'passive-source';
+          source.textContent = w.source || '';
+          const desc = document.createElement('div');
+          desc.className = 'weapon-desc';
+          desc.style.marginTop = '6px';
+          desc.textContent = w.description || '';
+          main.appendChild(title);
+          if(w.source) main.appendChild(source);
+          main.appendChild(desc);
+          card.appendChild(main);
+          listEl.appendChild(card);
+        }
+      }catch(err){
+        console.error(err);
+        listEl.innerHTML = '<p>Failed to load mutation waves.</p>';
+      }
+    })();
+  </script>
+</body>
+</html>
