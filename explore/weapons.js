@@ -133,18 +133,6 @@
         }
       }
 
-      // Stats
-      const statsWrap = document.createElement('div');
-      statsWrap.className = 'stats';
-      if(w.stats){
-        for(const [k,v] of Object.entries(w.stats)){
-          const s = document.createElement('span');
-          s.className = 'stat';
-          s.textContent = `${k}: ${v}`;
-          statsWrap.appendChild(s);
-        }
-      }
-
       // Primary / Secondary ammo & damage
       const fireModesWrap = document.createElement('div');
       fireModesWrap.className = 'fire-modes';
@@ -224,7 +212,6 @@
       main.appendChild(title);
       main.appendChild(desc);
       main.appendChild(damageTypesWrap);
-      main.appendChild(statsWrap);
       main.appendChild(fireModesWrap);
       main.appendChild(modsWrap);
       main.appendChild(bonusWrap);
