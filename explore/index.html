@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Killing Floor 3 - Data</title>
+    <title>Killing Floor 3 — Data</title>
+    <link rel="stylesheet" href="weapons.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #ffffff; background: linear-gradient(135deg, #000000 0%, #1a0000 55%, #8b0000 100%); min-height: 100vh; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; background: #111111; border-radius: 10px; box-shadow: 0 10px 30px rgba(139, 0, 0, 0.35); padding: 40px; border: 1px solid #2a2a2a; }
-        h1 { color: #ff2b2b; margin-bottom: 10px; text-align: center; }
-        .subtitle { text-align: center; color: #cccccc; margin-bottom: 30px; font-size: 14px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #ff2b2b; text-decoration: none; font-weight: bold; }
-        .back-link:hover { text-decoration: underline; color: #c40000; }
-        .data-section { margin-top: 25px; padding: 20px; background: #171717; border-left: 4px solid #ff2b2b; border-radius: 5px; border: 1px solid #2a2a2a; border-left: 4px solid #ff2b2b; }
+        .subtitle { text-align: center; color: var(--muted); margin-bottom: 30px; font-size: 14px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; color: var(--accent-dark); }
+        .data-section { margin-top: 25px; padding: 20px; background: #171717; border-left: 4px solid var(--accent); border-radius: 6px; border: 1px solid #2a2a2a; border-left: 4px solid var(--accent); }
         .data-section h2 { color: #ffffff; margin-bottom: 10px; font-size: 20px; }
-        .data-section p { color: #cfcfcf; margin-bottom: 10px; }
-        .data-section a { display: inline-block; padding: 10px 20px; background: #ff2b2b; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; transition: background 0.3s ease; font-weight: bold; }
-        .data-section a:hover { background: #c40000; }
-        footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #2a2a2a; color: #cccccc; font-size: 14px; }
+        .data-section p { color: var(--muted); margin-bottom: 10px; }
+        .data-section a { display: inline-block; padding: 10px 20px; background: var(--accent); color: white; text-decoration: none; border-radius: 6px; margin-top: 10px; transition: background 0.3s ease; font-weight: bold; }
+        .data-section a:hover { background: var(--accent-dark); }
+        footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #2a2a2a; color: var(--muted); font-size: 14px; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="wrapper">
         <a href="../" class="back-link">← Back to Home</a>
-        <h1>Killing Floor 3 - Data</h1>
+        <h1>Killing Floor 3 — Data</h1>
         <p class="subtitle">Raw game data</p>
 
         <div class="data-section">
@@ -47,6 +44,6 @@
         <footer>
             <p>Discord for more: #####</p>
         </footer>
-    </div>
+    </main>
 </body>
 </html>
