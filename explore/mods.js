@@ -17,11 +17,12 @@
 
   async function load(){
     try{
-      // Fetch the canonical mods file from /data/mods.json
-      const res = await fetch('/data/mods.json');
+      let res = await fetch('mods.json');
+      if(!res.ok) res = await fetch('../mods.json');
+      if(!res.ok) res = await fetch('/explore/mods.json');
       mods = await res.json();
     }catch(e){
-      console.error('Failed to load /data/mods.json', e);
+      console.error('Failed to load mods.json', e);
       mods = [];
     }
     filtered = mods.slice();
@@ -66,7 +67,7 @@
       price.className = 'weapon-price';
       price.style.marginLeft = 'auto';
       price.style.fontWeight = '700';
-      price.style.color = '#0b5aa8';
+      price.style.color = '#ff2b2b';
       if(typeof m.dosh === 'number') price.textContent = 'Dosh: ' + Number(m.dosh).toLocaleString();
       title.appendChild(price);
 
@@ -96,7 +97,7 @@
         for(const p of m.passives){
           const pDiv = document.createElement('div');
           pDiv.style.marginTop = '6px';
-          pDiv.innerHTML = `<strong>${escapeHtml(p.name)}</strong><div style=\"color:#555;\">${escapeHtml(p.description)}</div>`;
+          pDiv.innerHTML = `<strong>${escapeHtml(p.name)}</strong><div style="color:#cfcfcf;">${escapeHtml(p.description)}</div>`;
           passiveWrap.appendChild(pDiv);
         }
       }
@@ -122,7 +123,7 @@
     if(el){
       el.scrollIntoView({behavior:'smooth', block:'start'});
       // briefly highlight
-      el.style.boxShadow = '0 0 0 3px rgba(21,101,192,0.12)';
+      el.style.boxShadow = '0 0 0 3px rgba(255,43,43,0.35)';
       setTimeout(()=> el.style.boxShadow = '', 1600);
     }
   }

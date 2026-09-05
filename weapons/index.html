@@ -1,32 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>All Weapons</title>
-  <link rel="stylesheet" href="/styles/site.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=../explore/weapons.html">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weapons — Redirect</title>
+  <link rel="stylesheet" href="../explore/weapons.css">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #111;
+      --panel: #171717;
+      --text: #fff;
+      --muted: #cfcfcf;
+      --accent: #ff2b2b;
+      --border: #2a2a2a;
+    }
+    body { background: linear-gradient(135deg, var(--bg) 0%, #1a0000 55%, #8b0000 100%); color: var(--text); }
+    .wrapper { background: var(--bg-alt); border: 1px solid var(--border); color: var(--text); }
+    h1 { color: var(--accent); }
+    p, a { color: var(--text); }
+    a:hover { color: var(--accent); }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>All Weapons</h1>
-    <div class="controls">
-      <input id="search" placeholder="Search weapons..." aria-label="Search weapons">
-      <select id="perPage" aria-label="Weapons per page"><option value="10">10</option><option value="20">20</option></select>
-    </div>
-
-    <div id="class-links" style="margin:8px 0;" aria-label="Filter by class"></div>
-
-    <div id="list"></div>
-
-    <div class="pagination">
-      <button id="prevPage">Previous</button>
-      <span id="pageInfo"></span>
-      <button id="nextPage">Next</button>
-    </div>
-
-    <div id="popover" aria-hidden="true" style="position:fixed;z-index:9999;display:block;"></div>
+  <main class="wrapper">
+    <h1>Redirecting to Weapons & Mods...</h1>
+    <p>If you are not redirected automatically, <a href="../explore/weapons.html">click here to open Weapons & Mods</a>.</p>
   </main>
-
-  <script src="/data/weapons.js" defer></script>
 </body>
 </html>
