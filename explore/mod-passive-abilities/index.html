@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mod Passive Abilities</title>
   <link rel="stylesheet" href="../weapons.css">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #111;
+      --panel: #171717;
+      --text: #fff;
+      --muted: #cfcfcf;
+      --accent: #ff2b2b;
+      --border: #2a2a2a;
+    }
+    body { background: linear-gradient(135deg, var(--bg) 0%, #1a0000 55%, #8b0000 100%); color: var(--text); }
+    .wrapper { background: var(--bg-alt); border: 1px solid var(--border); color: var(--text); }
+    h1 { color: var(--accent); }
+    p { color: var(--muted); }
+    .weapon-card { background: var(--panel); border: 1px solid var(--border); color: var(--text); }
+    .weapon-title h2 { color: var(--accent); }
+    .weapon-desc { color: var(--muted) !important; }
+    a { color: var(--text); }
+    a:hover { color: var(--accent); }
+  </style>
 </head>
 <body>
   <main class="wrapper">
@@ -15,11 +35,10 @@
   </main>
 
   <script>
-    // Load ../mods/mods.json and aggregate passives
     (async ()=>{
       const listEl = document.getElementById('list');
       try{
-        const res = await fetch('../mods/mods.json');
+        const res = await fetch('../mods.json');
         const mods = await res.json();
         const passives = [];
         for(const m of mods){
@@ -29,21 +48,36 @@
             }
           }
         }
-        if(passives.length===0){ listEl.innerHTML = '<p>No passive abilities found.</p>'; return; }
-        // render
+        if(passives.length===0){
+          listEl.innerHTML = '<p>No passive abilities found.</p>';
+          return;
+        }
         for(const p of passives){
           const card = document.createElement('article');
           card.className = 'weapon-card';
           const main = document.createElement('div');
           main.className = 'weapon-main';
-          const title = document.createElement('div'); title.className = 'weapon-title';
-          const h2 = document.createElement('h2'); h2.textContent = p.name; title.appendChild(h2);
-          const meta = document.createElement('div'); meta.className = 'weapon-desc'; meta.textContent = `Source mod: ${p.modName}`;
-          const desc = document.createElement('div'); desc.style.marginTop='6px'; desc.style.color='#444'; desc.textContent = p.description;
-          main.appendChild(title); main.appendChild(meta); main.appendChild(desc); card.appendChild(main); listEl.appendChild(card);
+          const title = document.createElement('div');
+          title.className = 'weapon-title';
+          const h2 = document.createElement('h2');
+          h2.textContent = p.name;
+          title.appendChild(h2);
+          const meta = document.createElement('div');
+          meta.className = 'weapon-desc';
+          meta.textContent = `Source mod: ${p.modName}`;
+          const desc = document.createElement('div');
+          desc.style.marginTop='6px';
+          desc.style.color='#cfcfcf';
+          desc.textContent = p.description;
+          main.appendChild(title);
+          main.appendChild(meta);
+          main.appendChild(desc);
+          card.appendChild(main);
+          listEl.appendChild(card);
         }
       }catch(err){
-        console.error(err); listEl.innerHTML = '<p>Failed to load passive abilities.</p>';
+        console.error(err);
+        listEl.innerHTML = '<p>Failed to load passive abilities.</p>';
       }
     })();
   </script>
