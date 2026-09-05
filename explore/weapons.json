@@ -8,9 +8,7 @@
     "class":"Commando",
     "stats":{
       "Damage":"34",
-      "Fire Rate":"680 RPM",
-      "Range":"Medium",
-      "Weight":"3.2 kg"
+      "Fire Rate":"680 RPM"
     },
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
@@ -26,9 +24,7 @@
     "class":"Sharpshooter",
     "stats":{
       "Damage":"82",
-      "Fire Rate":"240 RPM",
-      "Range":"Long",
-      "Weight":"5.6 kg"
+      "Fire Rate":"240 RPM"
     },
     "mods":[
       {"id":"heavy-barrel","name":"Heavy Barrel","short":"+range","description":"Increases effective range and stability.","stats":{"Range":"+12%","Recoil":"-10%"},"link":"./mods/#heavy-barrel"},
@@ -44,9 +40,7 @@
     "class":"Gunslinger",
     "stats":{
       "Damage":"22",
-      "Fire Rate":"900 RPM",
-      "Range":"Short",
-      "Weight":"0.9 kg"
+      "Fire Rate":"900 RPM"
     },
     "mods":[
       {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Range":"-5%"},"link":"./mods/#suppressor"}
