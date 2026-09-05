@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Quick Acquire",
+    "description": "Reduces ADS time by 5%.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Clear Sight",
+    "description": "Slightly reduces scope sway while aiming.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Steady Supply",
+    "description": "Increases reserve ammo by 10%.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Longshot",
+    "description": "Reduces damage falloff at long range by 8%.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Controlled Burst",
+    "description": "First 5 shots of each burst have 10% less recoil.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Ghost",
+    "description": "Firing does not reveal your position on enemy radar.",
+    "source": "General passive ability"
+  },
+  {
+    "name": "Snap Aim",
+    "description": "Improves hip-fire accuracy by an extra 3% while moving.",
+    "source": "General passive ability"
+  }
+]

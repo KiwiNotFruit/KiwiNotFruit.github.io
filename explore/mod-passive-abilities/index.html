@@ -6,30 +6,14 @@
   <title>Mod Passive Abilities</title>
   <link rel="stylesheet" href="../weapons.css">
   <style>
-    :root {
-      --bg: #000;
-      --bg-alt: #111;
-      --panel: #171717;
-      --text: #fff;
-      --muted: #cfcfcf;
-      --accent: #ff2b2b;
-      --border: #2a2a2a;
-    }
-    body { background: linear-gradient(135deg, var(--bg) 0%, #1a0000 55%, #8b0000 100%); color: var(--text); }
-    .wrapper { background: var(--bg-alt); border: 1px solid var(--border); color: var(--text); }
-    h1 { color: var(--accent); }
-    p { color: var(--muted); }
-    .weapon-card { background: var(--panel); border: 1px solid var(--border); color: var(--text); }
-    .weapon-title h2 { color: var(--accent); }
-    .weapon-desc { color: var(--muted) !important; }
-    a { color: var(--text); }
-    a:hover { color: var(--accent); }
+    .weapon-desc { color: #cfcfcf !important; }
+    .passive-source { color: #ff2b2b; font-weight: 600; margin-top: 6px; }
   </style>
 </head>
 <body>
   <main class="wrapper">
     <h1>Mod Passive Abilities</h1>
-    <p>List of passive abilities for mods (text only).</p>
+    <p>Standalone passive abilities, separate from mods.</p>
 
     <div id="list" class="weapon-list" aria-live="polite"></div>
   </main>
@@ -38,17 +22,9 @@
     (async ()=>{
       const listEl = document.getElementById('list');
       try{
-        const res = await fetch('../mods.json');
-        const mods = await res.json();
-        const passives = [];
-        for(const m of mods){
-          if(Array.isArray(m.passives)){
-            for(const p of m.passives){
-              passives.push({modId: m.id, modName: m.name, name: p.name, description: p.description});
-            }
-          }
-        }
-        if(passives.length===0){
+        const res = await fetch('/explore/mod-passive-abilities.json');
+        const passives = await res.json();
+        if(!Array.isArray(passives) || passives.length===0){
           listEl.innerHTML = '<p>No passive abilities found.</p>';
           return;
         }
@@ -62,15 +38,15 @@
           const h2 = document.createElement('h2');
           h2.textContent = p.name;
           title.appendChild(h2);
-          const meta = document.createElement('div');
-          meta.className = 'weapon-desc';
-          meta.textContent = `Source mod: ${p.modName}`;
+          const source = document.createElement('div');
+          source.className = 'passive-source';
+          source.textContent = p.source || '';
           const desc = document.createElement('div');
-          desc.style.marginTop='6px';
-          desc.style.color='#cfcfcf';
-          desc.textContent = p.description;
+          desc.className = 'weapon-desc';
+          desc.style.marginTop = '6px';
+          desc.textContent = p.description || '';
           main.appendChild(title);
-          main.appendChild(meta);
+          if(p.source) main.appendChild(source);
           main.appendChild(desc);
           card.appendChild(main);
           listEl.appendChild(card);

@@ -1,7 +1,7 @@
 /* mods.js
    Loads mods.json and renders a searchable, paginated list of mods.
-   Each mod has an id (used for anchors), name, description, stats, slot and dosh, and optional passive abilities.
-   This file now points to the canonical /data/mods.json so both the weapons page and mods page share the same source.
+   Each mod has an id (used for anchors), name, description, stats, slot and dosh.
+   This file points to /explore/mods.json.
 */
 (() => {
   const listEl = document.getElementById('list');
@@ -17,17 +17,14 @@
 
   async function load(){
     try{
-      let res = await fetch('mods.json');
-      if(!res.ok) res = await fetch('../mods.json');
-      if(!res.ok) res = await fetch('/explore/mods.json');
+      const res = await fetch('/explore/mods.json');
       mods = await res.json();
     }catch(e){
-      console.error('Failed to load mods.json', e);
+      console.error('Failed to load /explore/mods.json', e);
       mods = [];
     }
     filtered = mods.slice();
     render();
-    // If there's a hash in the URL, scroll to it
     if(location.hash){
       const id = location.hash.substring(1);
       setTimeout(()=> scrollToId(id), 250);
@@ -62,12 +59,10 @@
       h2.textContent = m.name;
       title.appendChild(h2);
 
-      // Dosh display
       const price = document.createElement('div');
       price.className = 'weapon-price';
       price.style.marginLeft = 'auto';
       price.style.fontWeight = '700';
-      price.style.color = '#ff2b2b';
       if(typeof m.dosh === 'number') price.textContent = 'Dosh: ' + Number(m.dosh).toLocaleString();
       title.appendChild(price);
 
@@ -75,7 +70,6 @@
       desc.className = 'weapon-desc';
       desc.textContent = m.description || '';
 
-      // Stats
       const statsWrap = document.createElement('div');
       statsWrap.className = 'stats';
       if(m.stats){
@@ -87,28 +81,10 @@
         }
       }
 
-      // Passive abilities
-      const passiveWrap = document.createElement('div');
-      if(Array.isArray(m.passives) && m.passives.length){
-        const label = document.createElement('div');
-        label.className = 'small-link';
-        label.textContent = 'Passive abilities:';
-        passiveWrap.appendChild(label);
-        for(const p of m.passives){
-          const pDiv = document.createElement('div');
-          pDiv.style.marginTop = '6px';
-          pDiv.innerHTML = `<strong>${escapeHtml(p.name)}</strong><div style="color:#cfcfcf;">${escapeHtml(p.description)}</div>`;
-          passiveWrap.appendChild(pDiv);
-        }
-      }
-
       main.appendChild(title);
       main.appendChild(desc);
       main.appendChild(statsWrap);
-      main.appendChild(passiveWrap);
-
       card.appendChild(main);
-
       listEl.appendChild(card);
     }
 
@@ -122,33 +98,22 @@
     const el = document.getElementById(id);
     if(el){
       el.scrollIntoView({behavior:'smooth', block:'start'});
-      // briefly highlight
-      el.style.boxShadow = '0 0 0 3px rgba(255,43,43,0.35)';
+      el.style.boxShadow = '0 0 0 3px rgba(255,43,43,0.18)';
       setTimeout(()=> el.style.boxShadow = '', 1600);
     }
   }
 
-  function escapeHtml(s){
-    return String(s).replace(/[&<>\\"]/g, (c)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c] || c));
-  }
-
   function applySearch(){
     const q = (searchEl.value || '').trim().toLowerCase();
-    if(!q){
-      filtered = mods.slice();
-    }else{
-      filtered = mods.filter(m => ((m.name||'') + ' ' + (m.description||'') + ' ' + (m.passives ? m.passives.map(p=>p.name + ' ' + p.description).join(' ') : '')).toLowerCase().includes(q));
-    }
+    filtered = !q ? mods.slice() : mods.filter(m => ((m.name||'') + ' ' + (m.description||'') + ' ' + JSON.stringify(m.stats || '')).toLowerCase().includes(q));
     page = 1;
     render();
   }
 
-  // Events
-  searchEl.addEventListener('input', ()=>{ applySearch(); });
+  searchEl.addEventListener('input', applySearch);
   perPageEl.addEventListener('change', ()=>{ page = 1; render(); });
   prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); } });
   nextBtn.addEventListener('click', ()=>{ page++; render(); });
 
-  // Load
   load();
 })();
