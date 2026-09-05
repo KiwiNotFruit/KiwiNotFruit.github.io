@@ -5,6 +5,34 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mods — Data (Index)</title>
   <link rel="stylesheet" href="../weapons.css">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #111;
+      --panel: #171717;
+      --text: #fff;
+      --muted: #cfcfcf;
+      --accent: #ff2b2b;
+      --accent-dark: #c40000;
+      --border: #2a2a2a;
+    }
+    body { background: linear-gradient(135deg, var(--bg) 0%, #1a0000 55%, #8b0000 100%); color: var(--text); }
+    .wrapper { background: var(--bg-alt); border: 1px solid var(--border); color: var(--text); }
+    h1 { color: var(--accent); }
+    .controls, .weapon-card, .weapon-list { color: var(--text); }
+    input, select {
+      background: #0f0f0f;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .page-btn, button, a {
+      color: var(--text);
+    }
+    .weapon-card { background: var(--panel); border-color: var(--border); }
+    .weapon-title h2 { color: var(--accent); }
+    .weapon-desc { color: var(--muted); }
+    a:hover { color: var(--accent); }
+  </style>
 </head>
 <body>
   <main class="wrapper">
