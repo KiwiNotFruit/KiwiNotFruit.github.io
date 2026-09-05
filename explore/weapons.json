@@ -10,8 +10,7 @@
     "primary":{"damage":34,"magazine":30,"capacity":240},
     "secondary":{"damage":12,"magazine":10,"capacity":40},
     "stats":{
-      "Damage":"34",
-      "Fire Rate":"680 RPM"
+      "NA"
     },
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
@@ -29,8 +28,7 @@
     "primary":{"damage":82,"magazine":10,"capacity":80},
     "secondary":{"damage":40,"magazine":5,"capacity":20},
     "stats":{
-      "Damage":"82",
-      "Fire Rate":"240 RPM"
+     "NA"
     },
     "mods":[
       {"id":"heavy-barrel","name":"Heavy Barrel","short":"+range","description":"Increases effective range and stability.","stats":{"Range":"+12%","Recoil":"-10%"},"link":"./mods/#heavy-barrel"},
@@ -48,8 +46,7 @@
     "primary":{"damage":22,"magazine":15,"capacity":120},
     "secondary":{"damage":8,"magazine":8,"capacity":32},
     "stats":{
-      "Damage":"22",
-      "Fire Rate":"900 RPM"
+     "NA"
     },
     "mods":[
       {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Range":"-5%"},"link":"./mods/#suppressor"}
