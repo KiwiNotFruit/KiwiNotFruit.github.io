@@ -13,7 +13,7 @@
 (() => {
   const listEl = document.getElementById('list');
   const searchEl = document.getElementById('search');
-  const perPageEl = document.getElementById('perPage');
+  const classLinks = document.querySelectorAll('.class-links a');
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
   const pageInfo = document.getElementById('pageInfo');
@@ -24,7 +24,8 @@
   let modsById = {};
   let filtered = [];
   let page = 1;
-  let perPage = parseInt(perPageEl.value,10) || 10;
+  const perPage = 10;
+  let selectedClass = '';
 
   const STORAGE_KEY = 'weaponModSelections_v1';
 
@@ -58,7 +59,6 @@
   }
 
   function render(){
-    perPage = parseInt(perPageEl.value,10) || 10;
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / perPage));
     if(page>pages) page = pages;
@@ -201,6 +201,9 @@
     pageInfo.textContent = `Page ${page} of ${pages} (${total} weapons)`;
     prevBtn.disabled = page <= 1;
     nextBtn.disabled = page >= pages;
+    classLinks.forEach((link) => {
+      link.toggleAttribute('aria-current', link.dataset.class === selectedClass);
+    });
   }
 
   function toggleModForWeapon(weaponId, modId, cardEl){
@@ -312,18 +315,24 @@
   // Search by name only (case-insensitive)
   function applySearch(){
     const q = (searchEl.value || '').trim().toLowerCase();
-    if(!q){
-      filtered = weapons.slice();
-    }else{
-      filtered = weapons.filter(w => (w.name||'').toLowerCase().includes(q));
-    }
+    filtered = weapons.filter((weapon) =>
+      (!selectedClass || weapon.class === selectedClass) &&
+      (!q || (weapon.name || '').toLowerCase().includes(q))
+    );
     page = 1;
     render();
   }
 
   // Events
   searchEl.addEventListener('input', ()=>{ applySearch(); });
-  perPageEl.addEventListener('change', ()=>{ page = 1; render(); });
+  classLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      selectedClass = link.dataset.class;
+      history.replaceState(null, '', link.hash);
+      applySearch();
+    });
+  });
   prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); } });
   nextBtn.addEventListener('click', ()=>{ page++; render(); });
 
