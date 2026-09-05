@@ -2,33 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=./mods/">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mods — Data</title>
+  <title>Mods — Redirect</title>
   <link rel="stylesheet" href="weapons.css">
+  <style>
+    :root {
+      --bg: #000;
+      --bg-alt: #111;
+      --panel: #171717;
+      --text: #fff;
+      --muted: #cfcfcf;
+      --accent: #ff2b2b;
+      --border: #2a2a2a;
+    }
+    body { background: linear-gradient(135deg, var(--bg) 0%, #1a0000 55%, #8b0000 100%); color: var(--text); }
+    .wrapper { background: var(--bg-alt); border: 1px solid var(--border); color: var(--text); }
+    h1 { color: var(--accent); }
+    p, a { color: var(--text); }
+    a:hover { color: var(--accent); }
+  </style>
 </head>
 <body>
   <main class="wrapper">
-    <h1>Mods</h1>
-
-    <div class="controls">
-      <input id="search" type="search" placeholder="Search mods by name or description..." aria-label="Search mods">
-      <label for="perPage">Per page:</label>
-      <select id="perPage" aria-label="Mods per page">
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-      </select>
-    </div>
-
-    <div id="list" class="weapon-list" aria-live="polite"></div>
-
-    <nav class="pagination" aria-label="Mods pages">
-      <button id="prevPage" class="page-btn">Prev</button>
-      <span id="pageInfo"></span>
-      <button id="nextPage" class="page-btn">Next</button>
-    </nav>
+    <h1>Redirecting to Mods...</h1>
+    <p>If you are not redirected automatically, <a href="./mods/">click here to open Mods</a>.</p>
   </main>
-
-  <script src="mods.js"></script>
 </body>
 </html>

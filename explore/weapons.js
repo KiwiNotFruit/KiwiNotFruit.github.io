@@ -99,7 +99,7 @@
       price.className = 'weapon-price';
       price.style.marginLeft = 'auto';
       price.style.fontWeight = '700';
-      price.style.color = '#0b5aa8';
+      price.style.color = '#ff2b2b';
       // initial value set later
       title.appendChild(price);
 
@@ -290,9 +290,9 @@
 
   function buildPopoverHtml(mod){
     const statsHtml = mod.stats ? Object.entries(mod.stats).map(([k,v])=> `<div><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</div>`).join('') : '';
-    const linkHtml = mod.id ? `<div style="margin-top:8px"><a href="/data/mods.html#${encodeURIComponent(mod.id)}" target="_blank">Open mod page</a></div>` : '';
+    const linkHtml = mod.id ? `<div style="margin-top:8px"><a href="./mods/#${encodeURIComponent(mod.id)}" target="_blank">Open mod page</a></div>` : '';
     const priceHtml = (typeof mod.dosh === 'number') ? `<div style="margin-top:6px"><strong>Cost:</strong> ${escapeHtml(String(mod.dosh))} dosh</div>` : '';
-    return `<div><strong>${escapeHtml(mod.name)}</strong><div style="-top6px;color:#555">${escapeHtml(mod.description||'')}</div><div style="margin-top:8px">${statsHtml}</div>${priceHtml}${linkHtml}</div>`;
+    return `<div><strong>${escapeHtml(mod.name)}</strong><div style="margin-top:6px;color:#cfcfcf">${escapeHtml(mod.description||'')}</div><div style="margin-top:8px">${statsHtml}</div>${priceHtml}${linkHtml}</div>`;
   }
 
   function hidePopover(){
