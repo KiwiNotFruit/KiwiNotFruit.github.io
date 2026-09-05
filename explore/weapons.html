@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weapons — Data</title>
+  <link rel="stylesheet" href="weapons.css">
+</head>
+<body>
+  <main class="wrapper">
+    <h1>Weapons</h1>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search weapons by name..." aria-label="Search weapons by name">
+      <label for="perPage">Per page:</label>
+      <select id="perPage" aria-label="Weapons per page">
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+
+    <div id="list" class="weapon-list" aria-live="polite"></div>
+
+    <nav class="pagination" aria-label="Weapons pages">
+      <button id="prevPage" class="page-btn">Prev</button>
+      <span id="pageInfo"></span>
+      <button id="nextPage" class="page-btn">Next</button>
+    </nav>
+  </main>
+
+  <!-- Simple popover container (reused for hover/click details) -->
+  <div id="popover" class="popover" role="dialog" aria-hidden="true"></div>
+
+  <script src="weapons.js"></script>
+</body>
+</html>
