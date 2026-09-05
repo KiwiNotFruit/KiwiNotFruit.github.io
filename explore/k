@@ -1,0 +1,55 @@
+[
+  {
+    "id": "w001",
+    "name": "M-12 Commando",
+    "dosh": 1200,
+    "image":"m12-commando.png",
+    "description":"A reliable mid-range assault rifle used by frontline commandos. Balanced accuracy and fire rate.",
+    "class":"Commando",
+    "stats":{
+      "Damage":"34",
+      "Fire Rate":"680 RPM",
+      "Range":"Medium",
+      "Weight":"3.2 kg"
+    },
+    "mods":[
+      {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"/data/mods.html#red-dot-sight"},
+      {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"/data/mods.html#extended-mag"}
+    ]
+  },
+  {
+    "id": "w002",
+    "name": "SR-50 Marksman",
+    "dosh": 2500,
+    "image":"sr50-marksman.jpg",
+    "description":"Semi-automatic marksman rifle for long range engagements. High damage per shot.",
+    "class":"Sharpshooter",
+    "stats":{
+      "Damage":"82",
+      "Fire Rate":"240 RPM",
+      "Range":"Long",
+      "Weight":"5.6 kg"
+    },
+    "mods":[
+      {"id":"heavy-barrel","name":"Heavy Barrel","short":"+range","description":"Increases effective range and stability.","stats":{"Range":"+12%","Recoil":"-10%"},"link":"/data/mods.html#heavy-barrel"},
+      {"id":"muzzle-brake","name":"Muzzle Brake","short":"-recoil","description":"Reduces recoil but slightly increases noise.","stats":{"Recoil":"-18%"},"link":"/data/mods.html#muzzle-brake"}
+    ]
+  },
+  {
+    "id": "w003",
+    "name": "Viper Pistol",
+    "dosh": 400,
+    "image":"viper-pistol.png",
+    "description":"Compact sidearm favored by specialists for its light weight and fast handling.",
+    "class":"Gunslinger",
+    "stats":{
+      "Damage":"22",
+      "Fire Rate":"900 RPM",
+      "Range":"Short",
+      "Weight":"0.9 kg"
+    },
+    "mods":[
+      {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Range":"-5%"},"link":"/data/mods.html#suppressor"}
+    ]
+  }
+]
