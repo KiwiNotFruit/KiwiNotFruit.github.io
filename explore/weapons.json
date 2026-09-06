@@ -3,7 +3,7 @@
     "id": "w001",
     "name": "M-12 Commando",
     "dosh": 1200,
-    "image":"X295 Wraith.png",
+    "image":"X295 Wraith.jpg",
     "description":"A reliable mid-range assault rifle used by frontline commandos. Balanced accuracy and fire rate.",
     "class":"Commando",
     "damageTypes":["Ballistic","Incendiary"],
