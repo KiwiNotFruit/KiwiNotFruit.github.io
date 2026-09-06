@@ -8,7 +8,7 @@ This site contains data, guides, and information related to Killing Floor 3.
 
 ## To Do
 
-
+change range stat with penetration
 
 ---
 
