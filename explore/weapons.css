@@ -26,10 +26,10 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .class-links a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .class-links a[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:#fff}
 .weapon-list{display:flex;flex-direction:column;gap:12px}
-.weapon-card{display:flex;gap:16px;background:var(--card-bg);padding:12px;border-radius:var(--radius);box-shadow:var(--shadow);align-items:flex-start;border:1px solid #2a2a2a}
-.weapon-image{width:220px;min-width:120px;height:120px;background:#0f0f0f;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #2a2a2a}
+.weapon-card{display:flex;flex-direction:column;gap:16px;background:var(--card-bg);padding:12px;border-radius:var(--radius);box-shadow:var(--shadow);align-items:center;border:1px solid #2a2a2a}
+.weapon-image{width:220px;min-width:120px;max-width:100%;height:120px;background:#0f0f0f;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #2a2a2a;margin:0 auto}
 .weapon-image img{width:100%;height:100%;object-fit:cover;display:block}
-.weapon-main{flex:1;min-width:0}
+.weapon-main{flex:1;min-width:0;width:100%;align-self:stretch}
 .weapon-title{display:flex;align-items:center;gap:8px}
 .weapon-title h2{font-size:1.1rem;margin:0;color:#fff}
 .weapon-desc{color:var(--muted);margin:8px 0}
@@ -49,8 +49,7 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 
 /* Responsive */
 @media (max-width:720px){
-  .weapon-card{flex-direction:column}
-  .weapon-image{width:100%;height:200px}
+  .weapon-image{width:100%;max-width:280px;height:200px}
 }
 
 /* Dosh price badge */
