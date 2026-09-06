@@ -108,36 +108,13 @@
       desc.className = 'weapon-desc';
       desc.textContent = w.description || '';
 
-      // Damage types
-      const damageTypesWrap = document.createElement('div');
-      damageTypesWrap.className = 'damage-types';
-      if(Array.isArray(w.damageTypes) && w.damageTypes.length){
-        const dtLabel = document.createElement('span');
-        dtLabel.className = 'damage-types-label';
-        dtLabel.textContent = 'Damage Types:';
-        damageTypesWrap.appendChild(dtLabel);
-        for(const dt of w.damageTypes){
-          const badge = document.createElement('span');
-          badge.className = 'damage-type';
-          badge.dataset.damageType = dt;
-          // Icon hook: add an empty icon span so an icon can be attached later via CSS/JS per damage type
-          const icon = document.createElement('span');
-          icon.className = 'damage-type-icon';
-          icon.setAttribute('aria-hidden','true');
-          badge.appendChild(icon);
-          const txt = document.createElement('span');
-          txt.className = 'damage-type-name';
-          txt.textContent = dt;
-          badge.appendChild(txt);
-          damageTypesWrap.appendChild(badge);
-        }
-      }
-
-      // Primary / Secondary ammo & damage
+      // Primary / Secondary damage & ammo (damage type shown under each side's Damage;
+      // primary and secondary can each declare their own damageTypes, falling back to
+      // the weapon-level damageTypes when not specified per side)
       const fireModesWrap = document.createElement('div');
       fireModesWrap.className = 'fire-modes';
-      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary));
-      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary));
+      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary, w.damageTypes));
+      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary, w.damageTypes));
 
       // Mods
       const modsWrap = document.createElement('div');
@@ -211,7 +188,6 @@
 
       main.appendChild(title);
       main.appendChild(desc);
-      main.appendChild(damageTypesWrap);
       main.appendChild(fireModesWrap);
       main.appendChild(modsWrap);
       main.appendChild(bonusWrap);
@@ -302,24 +278,70 @@
     try{ return 'Dosh: ' + Number(n).toLocaleString(); }catch(e){ return 'Dosh: ' + n; }
   }
 
-  function buildFireModeEl(label, mode){
+  function buildFireModeEl(label, mode, fallbackDamageTypes){
     const wrap = document.createElement('div');
     wrap.className = 'fire-mode';
     const head = document.createElement('div');
     head.className = 'fire-mode-label';
     head.textContent = label;
     wrap.appendChild(head);
-    const stats = document.createElement('div');
-    stats.className = 'fire-mode-stats';
-    const fields = [['Ammo', mode.ammo], ['Damage', mode.damage], ['Magazine', mode.magazine], ['Capacity', mode.capacity]];
-    for(const [k,v] of fields){
-      if(v === undefined || v === null || v === '') continue;
-      const s = document.createElement('span');
-      s.className = 'fire-mode-stat';
-      s.textContent = `${k}: ${v}`;
-      stats.appendChild(s);
+
+    // Damage (the most important stat, shown in a larger font) with its damage type(s) directly below it.
+    if(mode.damage !== undefined && mode.damage !== null && mode.damage !== ''){
+      const damageWrap = document.createElement('div');
+      damageWrap.className = 'fire-mode-damage';
+
+      const damageValue = document.createElement('div');
+      damageValue.className = 'fire-mode-damage-value';
+      damageValue.textContent = `${label} Damage: ${mode.damage}`;
+      damageWrap.appendChild(damageValue);
+
+      const damageTypes = Array.isArray(mode.damageTypes) ? mode.damageTypes : fallbackDamageTypes;
+      if(Array.isArray(damageTypes) && damageTypes.length){
+        const dtWrap = document.createElement('div');
+        dtWrap.className = 'damage-types';
+        for(const dt of damageTypes){
+          const badge = document.createElement('span');
+          badge.className = 'damage-type';
+          badge.dataset.damageType = dt;
+          // Icon hook: add an empty icon span so an icon can be attached later via CSS/JS per damage type
+          const icon = document.createElement('span');
+          icon.className = 'damage-type-icon';
+          icon.setAttribute('aria-hidden','true');
+          badge.appendChild(icon);
+          const txt = document.createElement('span');
+          txt.className = 'damage-type-name';
+          txt.textContent = dt;
+          badge.appendChild(txt);
+          dtWrap.appendChild(badge);
+        }
+        damageWrap.appendChild(dtWrap);
+      }
+      wrap.appendChild(damageWrap);
     }
-    wrap.appendChild(stats);
+
+    // Ammo (Magazine + Capacity), shown under Damage.
+    const ammoFields = [['Magazine', mode.magazine], ['Capacity', mode.capacity]];
+    const ammoValues = ammoFields.filter(([,v]) => v !== undefined && v !== null && v !== '');
+    if(ammoValues.length){
+      const ammoWrap = document.createElement('div');
+      ammoWrap.className = 'fire-mode-ammo';
+      const ammoLabel = document.createElement('div');
+      ammoLabel.className = 'fire-mode-ammo-label';
+      ammoLabel.textContent = `${label} Ammo`;
+      ammoWrap.appendChild(ammoLabel);
+      const stats = document.createElement('div');
+      stats.className = 'fire-mode-stats';
+      for(const [k,v] of ammoValues){
+        const s = document.createElement('span');
+        s.className = 'fire-mode-stat';
+        s.textContent = `${k}: ${v}`;
+        stats.appendChild(s);
+      }
+      ammoWrap.appendChild(stats);
+      wrap.appendChild(ammoWrap);
+    }
+
     return wrap;
   }
 
@@ -362,18 +384,26 @@
     popover.classList.add('show');
     popover.setAttribute('aria-hidden','false');
 
-    const x = ev.clientX || (window.innerWidth/2);
-    const y = ev.clientY || (window.innerHeight/2);
+    const targetEl = ev.currentTarget || ev.target;
     const pad = 12;
+    const gap = 8;
     // Give browser a moment to layout popover
     requestAnimationFrame(()=>{
       const rect = popover.getBoundingClientRect();
-      let left = x + 12;
-      let top = y + 12;
-      if(left + rect.width + pad > window.innerWidth) left = x - rect.width - 12;
-      if(top + rect.height + pad > window.innerHeight) top = y - rect.height - 12;
+      const targetRect = targetEl && targetEl.getBoundingClientRect
+        ? targetEl.getBoundingClientRect()
+        : { left: ev.clientX || 0, right: ev.clientX || 0, top: ev.clientY || 0, bottom: ev.clientY || 0 };
+
+      // Position the popover above the mod selection by default.
+      let left = targetRect.left;
+      let top = targetRect.top - rect.height - gap;
+
+      // If there isn't enough room above, fall back to below the mod selection.
+      if(top < pad) top = targetRect.bottom + gap;
+
+      if(left + rect.width + pad > window.innerWidth) left = window.innerWidth - rect.width - pad;
       popover.style.left = Math.max(pad, left) + 'px';
-      popover.style.top = Math.max(pad, top) + 'px';
+      popover.style.top = Math.max(pad, Math.min(top, window.innerHeight - rect.height - pad)) + 'px';
     });
   }
 
