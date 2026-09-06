@@ -1,14 +1,14 @@
 [
   {
     "id": "w001",
-    "name": "M-12 Commando",
-    "dosh": 1200,
+    "name": "X295 Wraith",
+    "dosh": 1500,
     "image":"X295 Wraith.jpg",
-    "description":"A reliable mid-range assault rifle used by frontline commandos. Balanced accuracy and fire rate.",
+    "description":"Mid-range assault rifle",
     "class":"Commando",
-    "damageTypes":["Ballistic","Incendiary"],
-    "primary":{"damage":34,"magazine":30,"capacity":240},
-    "secondary":{"damage":12,"magazine":10,"capacity":40},
+    "damageTypes":["Ballistic"],
+    "primary":{"damage":86,"magazine":30,"capacity":430},
+    "secondary":{"damage":00,"magazine":00,"capacity":00},
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
       {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"}
