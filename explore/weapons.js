@@ -25,7 +25,7 @@
   let filtered = [];
   let page = 1;
   const perPage = 10;
-  let selectedClass = '';
+  let selectedClass = 'Commando';
   const weaponClasses = new Set(Array.from(classLinks, (link) => link.dataset.class));
 
   const STORAGE_KEY = 'weaponModSelections_v1';
@@ -283,6 +283,17 @@
     try{ return 'Dosh: ' + Number(n).toLocaleString(); }catch(e){ return 'Dosh: ' + n; }
   }
 
+  const FIRE_MODE_STAT_GROUPS = [
+    {
+      className: 'fire-mode-key-stats',
+      fields: [['Damage', 'damage'], ['Magazine', 'magazine'], ['Capacity', 'capacity']]
+    },
+    {
+      className: 'fire-mode-detail-stats',
+      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Range', 'range'], ['Handling', 'handling'], ['Recoil', 'recoil']]
+    }
+  ];
+
   function buildFireModeEl(label, mode, isPrimary){
     const wrap = document.createElement('div');
     wrap.className = 'fire-mode';
@@ -303,13 +314,17 @@
 
     const stats = document.createElement('div');
     stats.className = 'fire-mode-stats';
-    const fields = [['Ammo', mode.ammo], ['Damage', mode.damage], ['Magazine', mode.magazine], ['Capacity', mode.capacity]];
-    for(const [k,v] of fields){
-      if(v === undefined || v === null || v === '') continue;
-      const s = document.createElement('span');
-      s.className = 'fire-mode-stat';
-      s.textContent = `${k}: ${v}`;
-      stats.appendChild(s);
+    for(const group of FIRE_MODE_STAT_GROUPS){
+      const groupEl = document.createElement('div');
+      groupEl.className = group.className;
+      for(const [label, field] of group.fields){
+        const stat = document.createElement('span');
+        stat.className = 'fire-mode-stat';
+        const value = mode[field];
+        stat.textContent = `${label}: ${value === undefined || value === null || value === '' ? '—' : value}`;
+        groupEl.appendChild(stat);
+      }
+      stats.appendChild(groupEl);
     }
     wrap.appendChild(stats);
     return wrap;
@@ -451,7 +466,7 @@
 
   function selectClassFromHash(){
     const className = new URLSearchParams(location.hash.slice(1)).get('class');
-    selectedClass = weaponClasses.has(className) ? className : '';
+    selectedClass = weaponClasses.has(className) ? className : 'Commando';
   }
 
   // Events
