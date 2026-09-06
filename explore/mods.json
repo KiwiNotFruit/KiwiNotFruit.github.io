@@ -63,12 +63,12 @@
   {
     "id":"incendiary-rounds",
     "name":"Incendiary Rounds",
-    "description":"Ammunition mod that swaps the primary fire mode's rounds for incendiary ones, changing its damage type from Ballistic to Incendiary.",
+    "description":"Ammunition mod that swaps the primary fire mode's rounds for incendiary ones, changing its damage type from Ballistic to Heat.",
     "slot":"ammunition",
     "dosh":250,
-    "primaryDamageTypes":["Incendiary"],
+    "primaryDamageTypes":["Heat"],
     "stats":{
-      "Damage Type":"Incendiary"
+      "Damage Type":"Heat"
     }
   }
 ]
