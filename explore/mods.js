@@ -6,7 +6,6 @@
 (() => {
   const listEl = document.getElementById('list');
   const searchEl = document.getElementById('search');
-  const perPageEl = document.getElementById('perPage');
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
   const pageInfo = document.getElementById('pageInfo');
@@ -14,6 +13,7 @@
   let mods = [];
   let filtered = [];
   let page = 1;
+  const perPage = 10;
 
   async function load(){
     try{
@@ -32,7 +32,6 @@
   }
 
   function render(){
-    const perPage = parseInt(perPageEl.value,10) || 10;
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / perPage));
     if(page>pages) page = pages;
@@ -111,7 +110,6 @@
   }
 
   searchEl.addEventListener('input', applySearch);
-  perPageEl.addEventListener('change', ()=>{ page = 1; render(); });
   prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); } });
   nextBtn.addEventListener('click', ()=>{ page++; render(); });
 
