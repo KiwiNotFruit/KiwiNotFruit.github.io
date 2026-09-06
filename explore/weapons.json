@@ -10,7 +10,7 @@
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
       {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"},
-      {"id":"incendiary-rounds","name":"Incendiary Rounds","short":"Incendiary ammo","description":"Swaps the primary fire ammunition for incendiary rounds, changing its damage type.","stats":{"Damage Type":"Incendiary"},"link":"./mods/#incendiary-rounds"}
+      {"id":"incendiary-rounds","name":"Incendiary Rounds","short":"Incendiary ammo","description":"Swaps the primary fire ammunition for incendiary rounds, changing its damage type.","stats":{"Damage Type":"Heat"},"link":"./mods/#incendiary-rounds"}
     ]
   },
   {

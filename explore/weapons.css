@@ -93,13 +93,17 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .damage-types-label{font-size:0.9rem;color:var(--accent);font-weight:600}
 .damage-type{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #2a2a2a;padding:4px 8px;border-radius:6px;color:#fff;font-weight:600}
 .damage-type-icon{display:inline-block;width:14px;height:14px;border-radius:50%;background:#2a2a2a;flex:0 0 auto}
-/* Per-type icon hooks: set background-image or color per damage type here later, e.g.
-   .damage-type[data-damage-type="Cold"] .damage-type-icon{background:#66ccff}
-*/
-.damage-type[data-damage-type="Cold"] .damage-type-icon{background:#66ccff}
-.damage-type[data-damage-type="Ballistic"] .damage-type-icon{background:#c9a227}
-.damage-type[data-damage-type="Biological"] .damage-type-icon{background:#39d353}
-.damage-type[data-damage-type="Incendiary"] .damage-type-icon{background:#ff7a1a}
+/* Per-type icon hooks */
+.damage-type[data-damage-type="Force" i] .damage-type-icon{background:#cc5500}
+.damage-type[data-damage-type="Ballistic" i] .damage-type-icon{background:#fae17d}
+.damage-type[data-damage-type="Cut" i] .damage-type-icon{background:#ffffff}
+.damage-type[data-damage-type="Biological" i] .damage-type-icon{background:#5cdb5c}
+.damage-type[data-damage-type="Electrical" i] .damage-type-icon{background:#1e90ff}
+.damage-type[data-damage-type="Heat" i] .damage-type-icon{background:#ff4500}
+.damage-type[data-damage-type="Soundwave" i] .damage-type-icon{background:#9d4edd}
+.damage-type[data-damage-type="Acidic" i] .damage-type-icon{background:#b38b6d}
+.damage-type[data-damage-type="Cold" i] .damage-type-icon{background:#66ccff}
+.damage-type[data-damage-type="Incendiary" i] .damage-type-icon{background:#ff4500}
 
 /* Primary / Secondary fire modes */
 .fire-modes{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
