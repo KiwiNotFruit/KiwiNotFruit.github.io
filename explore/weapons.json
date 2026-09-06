@@ -6,11 +6,11 @@
     "image":"X295 Wraith.jpg",
     "description":"Mid-range assault rifle",
     "class":"Commando",
-    "damageTypes":["Ballistic"],
-    "primary":{"damage":86,"magazine":30,"capacity":430},
+    "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430},
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
-      {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"}
+      {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"},
+      {"id":"incendiary-rounds","name":"Incendiary Rounds","short":"Incendiary ammo","description":"Swaps the primary fire ammunition for incendiary rounds, changing its damage type.","stats":{"Damage Type":"Incendiary"},"link":"./mods/#incendiary-rounds"}
     ]
   },
   {
@@ -20,9 +20,8 @@
     "image":"sr50-marksman.jpg",
     "description":"Semi-automatic marksman rifle for long range engagements. High damage per shot.",
     "class":"Sharpshooter",
-    "damageTypes":["Ballistic","Cold"],
-    "primary":{"damage":82,"magazine":10,"capacity":80},
-    "secondary":{"damage":40,"magazine":5,"capacity":20},
+    "primary":{"damageTypes":["Ballistic"],"damage":82,"magazine":10,"capacity":80},
+    "secondary":{"damageTypes":["Cold"],"damage":40,"magazine":5,"capacity":20},
     "mods":[
       {"id":"heavy-barrel","name":"Heavy Barrel","short":"+range","description":"Increases effective range and stability.","stats":{"Range":"+12%","Recoil":"-10%"},"link":"./mods/#heavy-barrel"},
       {"id":"muzzle-brake","name":"Muzzle Brake","short":"-recoil","description":"Reduces recoil but slightly increases noise.","stats":{"Recoil":"-18%"},"link":"./mods/#muzzle-brake"}
@@ -35,9 +34,8 @@
     "image":"viper-pistol.png",
     "description":"Compact sidearm favored by specialists for its light weight and fast handling.",
     "class":"Gunslinger",
-    "damageTypes":["Ballistic","Biological"],
-    "primary":{"damage":22,"magazine":15,"capacity":120},
-    "secondary":{"damage":8,"magazine":8,"capacity":32},
+    "primary":{"damageTypes":["Ballistic"],"damage":22,"magazine":15,"capacity":120},
+    "secondary":{"damageTypes":["Biological"],"damage":8,"magazine":8,"capacity":32},
     "mods":[
       {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Range":"-5%"},"link":"./mods/#suppressor"}
     ]

@@ -110,36 +110,12 @@
       desc.className = 'weapon-desc';
       desc.textContent = w.description || '';
 
-      // Damage types
-      const damageTypesWrap = document.createElement('div');
-      damageTypesWrap.className = 'damage-types';
-      if(Array.isArray(w.damageTypes) && w.damageTypes.length){
-        const dtLabel = document.createElement('span');
-        dtLabel.className = 'damage-types-label';
-        dtLabel.textContent = 'Damage Types:';
-        damageTypesWrap.appendChild(dtLabel);
-        for(const dt of w.damageTypes){
-          const badge = document.createElement('span');
-          badge.className = 'damage-type';
-          badge.dataset.damageType = dt;
-          // Icon hook: add an empty icon span so an icon can be attached later via CSS/JS per damage type
-          const icon = document.createElement('span');
-          icon.className = 'damage-type-icon';
-          icon.setAttribute('aria-hidden','true');
-          badge.appendChild(icon);
-          const txt = document.createElement('span');
-          txt.className = 'damage-type-name';
-          txt.textContent = dt;
-          badge.appendChild(txt);
-          damageTypesWrap.appendChild(badge);
-        }
-      }
-
-      // Primary / Secondary ammo & damage
+      // Primary / Secondary ammo & damage (each fire mode shows its own damage type(s),
+      // since primary and secondary can deal different damage types)
       const fireModesWrap = document.createElement('div');
       fireModesWrap.className = 'fire-modes';
-      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary));
-      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary));
+      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary, true));
+      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary, false));
 
       // Mods
       const modsWrap = document.createElement('div');
@@ -213,7 +189,6 @@
 
       main.appendChild(title);
       main.appendChild(desc);
-      main.appendChild(damageTypesWrap);
       main.appendChild(fireModesWrap);
       main.appendChild(modsWrap);
       main.appendChild(bonusWrap);
@@ -223,8 +198,10 @@
 
       listEl.appendChild(card);
 
-      // After appending, update the displayed price and mod bonuses based on persisted selection
+      // After appending, update the displayed price, primary damage type(s) and mod
+      // bonuses based on persisted selection
       updateWeaponPriceDisplay(w, card);
+      updatePrimaryDamageTypesDisplay(w, card);
       updateWeaponModBonuses(w, card);
     }
 
@@ -255,6 +232,7 @@
       const weapon = weapons.find(w=>w.id===weaponId);
       if(weapon){
         updateWeaponPriceDisplay(weapon, cardEl);
+        updatePrimaryDamageTypesDisplay(weapon, cardEl);
         updateWeaponModBonuses(weapon, cardEl);
       }
       return;
@@ -283,6 +261,7 @@
     const weapon = weapons.find(w=>w.id===weaponId);
     if(weapon){
       updateWeaponPriceDisplay(weapon, cardEl);
+      updatePrimaryDamageTypesDisplay(weapon, cardEl);
       updateWeaponModBonuses(weapon, cardEl);
     }
   }
@@ -304,13 +283,24 @@
     try{ return 'Dosh: ' + Number(n).toLocaleString(); }catch(e){ return 'Dosh: ' + n; }
   }
 
-  function buildFireModeEl(label, mode){
+  function buildFireModeEl(label, mode, isPrimary){
     const wrap = document.createElement('div');
     wrap.className = 'fire-mode';
+    wrap.dataset.role = isPrimary ? 'primary' : 'secondary';
     const head = document.createElement('div');
     head.className = 'fire-mode-label';
     head.textContent = label;
     wrap.appendChild(head);
+
+    // Damage type(s) for this fire mode, shown right under the Primary/Secondary
+    // label since primary and secondary can deal different damage types. Only the
+    // primary damage type(s) can change when certain mods (e.g. an ammunition mod)
+    // are selected, so this wrap is targeted directly by updatePrimaryDamageTypesDisplay.
+    const damageTypesWrap = document.createElement('div');
+    damageTypesWrap.className = 'fire-mode-damage-types';
+    renderDamageTypeBadges(damageTypesWrap, mode.damageTypes);
+    wrap.appendChild(damageTypesWrap);
+
     const stats = document.createElement('div');
     stats.className = 'fire-mode-stats';
     const fields = [['Ammo', mode.ammo], ['Damage', mode.damage], ['Magazine', mode.magazine], ['Capacity', mode.capacity]];
@@ -323,6 +313,54 @@
     }
     wrap.appendChild(stats);
     return wrap;
+  }
+
+  // Builds damage type badges (with icon hooks) into the given container.
+  function renderDamageTypeBadges(container, damageTypes){
+    container.innerHTML = '';
+    if(!Array.isArray(damageTypes) || !damageTypes.length) return;
+    const dtLabel = document.createElement('span');
+    dtLabel.className = 'damage-types-label';
+    dtLabel.textContent = 'Damage Types:';
+    container.appendChild(dtLabel);
+    for(const dt of damageTypes){
+      const badge = document.createElement('span');
+      badge.className = 'damage-type';
+      badge.dataset.damageType = dt;
+      // Icon hook: add an empty icon span so an icon can be attached later via CSS/JS per damage type
+      const icon = document.createElement('span');
+      icon.className = 'damage-type-icon';
+      icon.setAttribute('aria-hidden','true');
+      badge.appendChild(icon);
+      const txt = document.createElement('span');
+      txt.className = 'damage-type-name';
+      txt.textContent = dt;
+      badge.appendChild(txt);
+      container.appendChild(badge);
+    }
+  }
+
+  // Re-renders the primary fire mode's damage type badges based on the currently
+  // selected mods. Only the primary damage type(s) can be changed by a mod (e.g. an
+  // ammunition mod); the secondary damage type is always the weapon's own data and
+  // is never affected by mod selection.
+  function updatePrimaryDamageTypesDisplay(weapon, cardEl){
+    if(!weapon.primary) return;
+    const wrap = cardEl.querySelector('.fire-mode[data-role="primary"] .fire-mode-damage-types');
+    if(!wrap) return;
+
+    const selections = loadSelections();
+    const sel = Array.isArray(selections[weapon.id]) ? selections[weapon.id] : [];
+
+    // Last selected mod that overrides primary damage types wins.
+    let damageTypes = weapon.primary.damageTypes;
+    for(const id of sel){
+      const m = modsById[id];
+      if(m && Array.isArray(m.primaryDamageTypes) && m.primaryDamageTypes.length){
+        damageTypes = m.primaryDamageTypes;
+      }
+    }
+    renderDamageTypeBadges(wrap, damageTypes);
   }
 
   // Renders the combined bonus text of all selected mods at the bottom of a weapon card.
