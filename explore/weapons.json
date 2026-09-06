@@ -8,7 +8,7 @@
     "class":"Commando",
     "damageTypes":["Ballistic"],
     "primary":{"damage":86,"magazine":30,"capacity":430},
-    "secondary":{"damage":00,"magazine":00,"capacity":00},
+    "secondary":{"damage":50,"magazine":40,"capacity":50},
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
       {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"}
