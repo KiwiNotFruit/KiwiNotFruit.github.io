@@ -114,8 +114,8 @@
       // since primary and secondary can deal different damage types)
       const fireModesWrap = document.createElement('div');
       fireModesWrap.className = 'fire-modes';
-      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary', w.primary, true));
-      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary', w.secondary, false));
+      if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary Fire Mode', w.primary, true));
+      if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary Fire Mode', w.secondary, false));
 
       // Mods
       const modsWrap = document.createElement('div');
