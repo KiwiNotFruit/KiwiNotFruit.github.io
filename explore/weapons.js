@@ -83,7 +83,9 @@
       imgWrap.className = 'weapon-image';
       const img = document.createElement('img');
       img.alt = w.name + ' image';
-      img.src = w.image ? '../assets/images/weapons/' + w.image : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#999" font-family="Arial" font-size="20">No image</text></svg>';
+      const noImageSrc = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#999" font-family="Arial" font-size="20">No image</text></svg>';
+      img.src = w.image ? '../assets/images/weapons/' + w.image : noImageSrc;
+      img.onerror = function(){ img.onerror = null; img.src = noImageSrc; };
       imgWrap.appendChild(img);
 
       const main = document.createElement('div');
