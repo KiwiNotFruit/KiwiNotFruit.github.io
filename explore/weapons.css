@@ -94,7 +94,7 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 }
 
 /* Damage types */
-.damage-types{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.damage-types{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
 .damage-types-label{font-size:0.9rem;color:var(--accent);font-weight:600}
 .damage-type{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #2a2a2a;padding:4px 8px;border-radius:6px;color:#fff;font-weight:600}
 .damage-type-icon{display:inline-block;width:14px;height:14px;border-radius:50%;background:#2a2a2a;flex:0 0 auto}
@@ -106,13 +106,10 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .damage-type[data-damage-type="Biological"] .damage-type-icon{background:#39d353}
 .damage-type[data-damage-type="Incendiary"] .damage-type-icon{background:#ff7a1a}
 
-/* Primary / Secondary fire modes: Primary shown on the left, Secondary (when present) to its right */
+/* Primary / Secondary fire modes */
 .fire-modes{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
 .fire-mode{background:#141414;border:1px solid #2a2a2a;border-radius:6px;padding:8px 10px;min-width:200px;flex:1}
 .fire-mode-label{font-size:0.85rem;color:var(--accent);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em}
-.fire-mode-damage{margin-bottom:10px}
-.fire-mode-damage-value{font-size:1.2rem;font-weight:800;color:#fff}
-.fire-mode-ammo-label{font-size:0.85rem;color:var(--muted);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.03em}
 .fire-mode-stats{display:flex;gap:8px;flex-wrap:wrap}
 .fire-mode-stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:4px 8px;color:#fff;font-weight:600;font-size:0.9rem}
 
