@@ -6,7 +6,7 @@
     "image":"X295 Wraith.jpg",
     "description":"Mid-range assault rifle",
     "class":"Commando",
-    "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430},
+    "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430,"reloadSpeed":14},
     "mods":[
       {"id":"red-dot-sight","name":"Red Dot Sight","short":"+accuracy","description":"Improves hip and ADS accuracy.","stats":{"Accuracy":"+8%","Aim Speed":"-2%"},"link":"./mods/#red-dot-sight"},
       {"id":"extended-mag","name":"Extended Mag","short":"+mag","description":"Increases magazine capacity at the cost of reload speed.","stats":{"Magazine":"+15 rounds","Reload":"+0.5s"},"link":"./mods/#extended-mag"},
