@@ -121,3 +121,22 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .mod-bonuses{display:none;margin-top:8px;background:#1a0000;border:1px solid var(--accent);border-radius:6px;padding:6px 10px;color:#ffb3b3;font-size:0.9rem}
 .mod-bonuses.has-bonuses{display:block}
 .mod-bonuses-label{color:var(--accent);font-weight:700}
+
+/* Collapsible, category-driven mods UI */
+.view-mods-btn{padding:6px 10px;border-radius:6px;border:1px solid #2a2a2a;background:#171717;color:var(--accent);font-weight:600;cursor:pointer;transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease}
+.view-mods-btn:hover{border-color:var(--accent);color:#fff}
+.view-mods-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.view-mods-btn[aria-expanded="true"]{background:#1a0000;border-color:var(--accent)}
+.selected-mods-inline{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.selected-mods-inline:empty{display:none}
+.selected-mods-inline .small-link{text-decoration:none;cursor:default}
+.selected-mod-pill{display:inline-block;background:#1a0000;border:1px solid var(--accent);border-radius:6px;padding:3px 8px;color:#ffb3b3;font-size:0.85rem;font-weight:600}
+.mods-panel{margin-top:8px;background:#141414;border:1px solid #2a2a2a;border-radius:6px;padding:8px 10px}
+.mods-panel[hidden]{display:none}
+.mod-categories{display:flex;gap:6px;flex-wrap:wrap}
+.mod-category-btn{padding:4px 10px;border-radius:6px;border:1px solid #2a2a2a;background:#171717;color:#fff;font-size:0.85rem;font-weight:600;cursor:pointer;transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease}
+.mod-category-btn:hover{border-color:var(--accent);color:var(--accent)}
+.mod-category-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mod-category-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.mod-category-list{margin-top:8px}
+.mod-category-list:empty{display:none;margin-top:0}

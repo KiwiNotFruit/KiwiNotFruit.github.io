@@ -9,6 +9,13 @@
    - The weapon's displayed Dosh updates immediately: weapon.dosh + sum(selected mods' dosh).
    - Selections are persisted in localStorage so they survive page reloads.
    - Mod info is still available via hover popovers. A small info link opens the mod page in a new tab.
+   - Linked mods are hidden by default behind a per-card "View/Select Mods" toggle which opens a
+     category-driven panel (click a category chip to list its mods as "Category: Name").
+     Mod categories come from each mod's `category` field in mods.json, so assigning a category
+     to a weapon is data-driven: give the mod a category and link it in weapons.json. Category
+     chips follow MOD_CATEGORY_ORDER below; an optional per-weapon `modCategories` array in
+     weapons.json can override that ordering if ever needed. Selected mods stay visible in a
+     compact row under the toggle button, even while the panel is collapsed.
 */
 (() => {
   const listEl = document.getElementById('list');
@@ -29,6 +36,14 @@
   const weaponClasses = new Set(Array.from(classLinks, (link) => link.dataset.class));
 
   const STORAGE_KEY = 'weaponModSelections_v1';
+
+  // Supported mod categories (see mods.json "category" field). This list also fixes the
+  // display order of the category chips: e.g. the X295 Wraith (Commando) lists its linked
+  // mods as Ammunition, Barrel, Underbarrel, Sight, Magazine, Internal top-to-bottom.
+  const MOD_CATEGORY_ORDER = [
+    'Ammunition','Arrow','Barrel','Blade','Coating','Grip','Guard','Internal',
+    'Magazine','Pommel','Quiver','Riser','Sight','Underbarrel'
+  ];
 
   function loadSelections(){
     try{
@@ -117,69 +132,11 @@
       if(w.primary) fireModesWrap.appendChild(buildFireModeEl('Primary Fire Mode', w.primary, true));
       if(w.secondary) fireModesWrap.appendChild(buildFireModeEl('Secondary Fire Mode', w.secondary, false));
 
-      // Mods
+      // Mods (hidden by default behind a per-card "View/Select Mods" toggle)
       const modsWrap = document.createElement('div');
       modsWrap.className = 'mods';
       if(Array.isArray(w.mods) && w.mods.length){
-        const label = document.createElement('div');
-        label.className = 'small-link';
-        label.textContent = 'Mods:';
-        modsWrap.appendChild(label);
-
-        const currentSelection = Array.isArray(selections[w.id]) ? selections[w.id].slice() : [];
-
-        for(const m of w.mods){
-          const mi = document.createElement('span');
-          mi.className = 'mod-item';
-          mi.tabIndex = 0;
-          mi.dataset.modId = m.id || m.name;
-
-          // get full mod data when available
-          const modData = modsById[m.id] || m;
-          if(modData && modData.slot) mi.dataset.slot = modData.slot;
-
-          // Text label
-          const nameSpan = document.createElement('span');
-          nameSpan.textContent = m.name || (modData && modData.name) || 'Unknown Mod';
-          mi.appendChild(nameSpan);
-
-          // small info link to open mods page (does not toggle selection)
-          if(m.link){
-            const info = document.createElement('a');
-            info.href = m.link;
-            info.target = '_blank';
-            info.rel = 'noopener noreferrer';
-            info.textContent = ' ⓘ';
-            info.style.marginLeft = '6px';
-            info.style.fontSize = '0.85em';
-            info.addEventListener('click', (ev)=>{ ev.stopPropagation(); /* allow opening in new tab */ });
-            mi.appendChild(info);
-          }
-
-          // hover/click for popover info (mouseenter for desktop, click for touch)
-          mi.addEventListener('mouseenter', (ev)=> showPopoverForMod(modData, ev));
-          mi.addEventListener('mouseleave', hidePopover);
-          mi.addEventListener('click', (ev)=>{
-            ev.preventDefault();
-            toggleModForWeapon(w.id, mi.dataset.modId, card);
-          });
-          mi.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggleModForWeapon(w.id, mi.dataset.modId, card); } });
-
-          // show short text if provided
-          if(m.short){
-            const short = document.createElement('span');
-            short.className = 'mod-stats';
-            short.textContent = m.short;
-            mi.appendChild(short);
-          }
-
-          // mark if selected according to saved selections
-          if(currentSelection.includes(mi.dataset.modId)){
-            mi.classList.add('selected');
-          }
-
-          modsWrap.appendChild(mi);
-        }
+        buildWeaponModUI(w, card, modsWrap);
       }
 
       // Mod bonuses text area (updated when mods are selected/deselected)
@@ -198,11 +155,12 @@
 
       listEl.appendChild(card);
 
-      // After appending, update the displayed price, primary damage type(s) and mod
-      // bonuses based on persisted selection
+      // After appending, update the displayed price, primary damage type(s), mod
+      // bonuses and the selected-mods summary based on persisted selection
       updateWeaponPriceDisplay(w, card);
       updatePrimaryDamageTypesDisplay(w, card);
       updateWeaponModBonuses(w, card);
+      renderSelectedModsInline(w, card);
     }
 
     pageInfo.textContent = `Page ${page} of ${pages} (${total} weapons)`;
@@ -211,6 +169,183 @@
     classLinks.forEach((link) => {
       link.toggleAttribute('aria-current', link.dataset.class === selectedClass);
     });
+  }
+
+  // Resolves a mod's category to its canonical (title-cased) name. Unknown or missing
+  // categories fall back to "Uncategorized" so the UI still works with incomplete data.
+  function canonicalCategoryName(raw){
+    const value = String(raw || '').trim();
+    if(!value) return 'Uncategorized';
+    const known = MOD_CATEGORY_ORDER.find(c => c.toLowerCase() === value.toLowerCase());
+    return known || value;
+  }
+
+  // Categories available for a weapon, derived from its linked mods (mods.json "category"
+  // field) and ordered by MOD_CATEGORY_ORDER (unknown categories sort last, alphabetically).
+  // To override the order for a specific weapon, add a "modCategories" array to that
+  // weapon's entry in weapons.json.
+  function getWeaponModCategories(weapon){
+    const present = new Set();
+    for(const wm of (weapon.mods || [])){
+      const modData = modsById[wm.id] || wm;
+      present.add(canonicalCategoryName(modData.category));
+    }
+    const order = Array.isArray(weapon.modCategories) && weapon.modCategories.length
+      ? weapon.modCategories
+      : MOD_CATEGORY_ORDER;
+    const ordered = order.map(canonicalCategoryName).filter(c => present.has(c));
+    const seen = new Set(ordered);
+    const extras = Array.from(present).filter(c => !seen.has(c)).sort();
+    return ordered.concat(extras);
+  }
+
+  // Builds the collapsible mods UI for one weapon card: a toggle button, an always-visible
+  // "Selected Mods" summary, and a hidden panel of category chips + per-category mod list.
+  function buildWeaponModUI(weapon, card, modsWrap){
+    const categories = getWeaponModCategories(weapon);
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'view-mods-btn';
+    toggleBtn.textContent = 'View/Select Mods';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    modsWrap.appendChild(toggleBtn);
+
+    const selectedWrap = document.createElement('div');
+    selectedWrap.className = 'selected-mods-inline';
+    modsWrap.appendChild(selectedWrap);
+
+    const panel = document.createElement('div');
+    panel.className = 'mods-panel';
+    panel.hidden = true;
+
+    const catWrap = document.createElement('div');
+    catWrap.className = 'mod-categories';
+    catWrap.setAttribute('role', 'group');
+    catWrap.setAttribute('aria-label', 'Mod categories');
+    panel.appendChild(catWrap);
+
+    const listWrap = document.createElement('div');
+    listWrap.className = 'mod-category-list';
+    panel.appendChild(listWrap);
+    modsWrap.appendChild(panel);
+
+    let activeCategory = null;
+
+    for(const category of categories){
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mod-category-btn';
+      btn.dataset.category = category;
+      btn.textContent = category;
+      btn.setAttribute('aria-pressed', 'false');
+      btn.addEventListener('click', ()=>{
+        activeCategory = category;
+        for(const other of catWrap.querySelectorAll('.mod-category-btn')){
+          const isActive = other === btn;
+          other.classList.toggle('active', isActive);
+          other.setAttribute('aria-pressed', String(isActive));
+        }
+        renderCategoryMods(weapon, card, listWrap, activeCategory);
+      });
+      catWrap.appendChild(btn);
+    }
+
+    toggleBtn.addEventListener('click', ()=>{
+      const opening = panel.hidden;
+      panel.hidden = !opening;
+      toggleBtn.setAttribute('aria-expanded', String(opening));
+      toggleBtn.textContent = opening ? 'Hide Mods' : 'View/Select Mods';
+    });
+  }
+
+  // Renders the mods belonging to the active category as clickable "Category: Name" items.
+  function renderCategoryMods(weapon, card, listWrap, activeCategory){
+    listWrap.innerHTML = '';
+    if(!activeCategory) return;
+    const currentSelection = (() => {
+      const sel = loadSelections()[weapon.id];
+      return Array.isArray(sel) ? sel : [];
+    })();
+
+    for(const m of (weapon.mods || [])){
+      const modData = modsById[m.id] || m;
+      if(canonicalCategoryName(modData.category) !== activeCategory) continue;
+      listWrap.appendChild(buildModItemEl(weapon, card, m, modData, currentSelection));
+    }
+  }
+
+  function buildModItemEl(weapon, card, m, modData, currentSelection){
+    const mi = document.createElement('span');
+    mi.className = 'mod-item';
+    mi.tabIndex = 0;
+    mi.dataset.modId = m.id || m.name;
+    if(modData && modData.slot) mi.dataset.slot = modData.slot;
+
+    // Text label
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = `${canonicalCategoryName(modData.category)}: ${m.name || (modData && modData.name) || 'Unknown Mod'}`;
+    mi.appendChild(nameSpan);
+
+    // small info link to open mods page (does not toggle selection)
+    if(m.link){
+      const info = document.createElement('a');
+      info.href = m.link;
+      info.target = '_blank';
+      info.rel = 'noopener noreferrer';
+      info.textContent = ' ⓘ';
+      info.style.marginLeft = '6px';
+      info.style.fontSize = '0.85em';
+      info.addEventListener('click', (ev)=>{ ev.stopPropagation(); /* allow opening in new tab */ });
+      mi.appendChild(info);
+    }
+
+    // hover/click for popover info (mouseenter for desktop, click for touch)
+    mi.addEventListener('mouseenter', (ev)=> showPopoverForMod(modData, ev));
+    mi.addEventListener('mouseleave', hidePopover);
+    mi.addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      toggleModForWeapon(weapon.id, mi.dataset.modId, card);
+    });
+    mi.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggleModForWeapon(weapon.id, mi.dataset.modId, card); } });
+
+    // show short text if provided
+    if(m.short){
+      const short = document.createElement('span');
+      short.className = 'mod-stats';
+      short.textContent = m.short;
+      mi.appendChild(short);
+    }
+
+    // mark if selected according to saved selections
+    if(currentSelection.includes(mi.dataset.modId)){
+      mi.classList.add('selected');
+    }
+    return mi;
+  }
+
+  // Compact summary of the weapon's currently selected mods ("Category: Name" pills),
+  // kept visible next to the toggle button even while the mods panel is collapsed.
+  function renderSelectedModsInline(weapon, cardEl){
+    const wrap = cardEl.querySelector('.selected-mods-inline');
+    if(!wrap) return;
+    wrap.innerHTML = '';
+    const sel = loadSelections()[weapon.id];
+    if(!Array.isArray(sel) || sel.length === 0) return;
+
+    const label = document.createElement('span');
+    label.className = 'small-link';
+    label.textContent = 'Selected Mods:';
+    wrap.appendChild(label);
+
+    for(const id of sel){
+      const m = modsById[id];
+      if(!m) continue;
+      const tag = document.createElement('span');
+      tag.className = 'selected-mod-pill';
+      tag.textContent = `${canonicalCategoryName(m.category)}: ${m.name}`;
+      wrap.appendChild(tag);
+    }
   }
 
   function toggleModForWeapon(weaponId, modId, cardEl){
@@ -234,6 +369,7 @@
         updateWeaponPriceDisplay(weapon, cardEl);
         updatePrimaryDamageTypesDisplay(weapon, cardEl);
         updateWeaponModBonuses(weapon, cardEl);
+        renderSelectedModsInline(weapon, cardEl);
       }
       return;
     }
@@ -263,6 +399,7 @@
       updateWeaponPriceDisplay(weapon, cardEl);
       updatePrimaryDamageTypesDisplay(weapon, cardEl);
       updateWeaponModBonuses(weapon, cardEl);
+      renderSelectedModsInline(weapon, cardEl);
     }
   }
 
@@ -290,7 +427,7 @@
     },
     {
       className: 'fire-mode-detail-stats',
-      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Range', 'range'], ['Handling', 'handling'], ['Recoil', 'recoil']]
+      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Penetration', 'penetration'], ['Handling', 'handling'], ['Recoil', 'recoil']]
     }
   ];
 
