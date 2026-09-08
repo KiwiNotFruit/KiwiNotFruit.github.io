@@ -23,7 +23,7 @@
     "primary":{"damageTypes":["Ballistic"],"damage":82,"magazine":10,"capacity":80},
     "secondary":{"damageTypes":["Cold"],"damage":40,"magazine":5,"capacity":20},
     "mods":[
-      {"id":"heavy-barrel","name":"Heavy Barrel","short":"+range","description":"Increases effective range and stability.","stats":{"Range":"+12%","Recoil":"-10%"},"link":"./mods/#heavy-barrel"},
+      {"id":"heavy-barrel","name":"Heavy Barrel","short":"+penetration","description":"Increases effective range and stability.","stats":{"Penetration":"+12%","Recoil":"-10%"},"link":"./mods/#heavy-barrel"},
       {"id":"muzzle-brake","name":"Muzzle Brake","short":"-recoil","description":"Reduces recoil but slightly increases noise.","stats":{"Recoil":"-18%"},"link":"./mods/#muzzle-brake"}
     ]
   },
@@ -37,7 +37,7 @@
     "primary":{"damageTypes":["Ballistic"],"damage":22,"magazine":15,"capacity":120},
     "secondary":{"damageTypes":["Biological"],"damage":8,"magazine":8,"capacity":32},
     "mods":[
-      {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Range":"-5%"},"link":"./mods/#suppressor"}
+      {"id":"suppressor","name":"Suppressor","short":"-sound","description":"Reduces firing sound and slightly decreases damage at range.","stats":{"Sound":"-100%","Penetration":"-5%"},"link":"./mods/#suppressor"}
     ]
   }
 ]

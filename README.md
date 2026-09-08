@@ -6,10 +6,6 @@ A simple information and guide website for Killing Floor 3.
 
 This site contains data, guides, and information related to Killing Floor 3.
 
-## To Do
-
-change range stat with penetration
-
 ---
 
 ## Data pages (Weapons & Mods)
@@ -63,8 +59,15 @@ How to edit mod data
   - id: used as the anchor (e.g., "red-dot-sight")
   - name
   - description
+  - category: mod category shown on the weapons page; one of Ammunition, Arrow, Barrel, Blade, Coating, Grip, Guard, Internal, Magazine, Pommel, Quiver, Riser, Sight, Underbarrel (unknown or missing values fall back to "Uncategorized")
   - stats: object of key/value pairs
   - passives: optional array of passive abilities (each {name, description})
+
+Weapon mod categories
+- On the weapons page, a weapon's linked mods are hidden behind a "View/Select Mods" button and grouped by their mods.json category (rendered as "Category: Name").
+- A category chip only appears for a weapon if at least one of its linked mods has that category, so adding/removing a category for a weapon is data-driven: set the mod's category in mods.json and link/unlink it in weapons.json.
+- Category chips are ordered by the MOD_CATEGORY_ORDER list at the top of explore/weapons.js (unknown categories sort last). To override the order for a single weapon, add a "modCategories": ["Ammunition", ...] array to that weapon in weapons.json.
+- Currently selected mods stay visible in a "Selected Mods" row next to the button, even while the mods panel is collapsed.
 
 Example mod entry (JSON):
 

@@ -4,6 +4,7 @@
     "name":"Red Dot Sight",
     "description":"A compact optic that improves close-to-mid range aiming without obstructing the view.",
     "slot":"optic",
+    "category":"Sight",
     "dosh":150,
     "stats":{
       "Zoom":"1.1x"
@@ -14,6 +15,7 @@
     "name":"Extended Mag",
     "description":"Increases magazine capacity allowing longer sustained fire before reload.",
     "slot":"magazine",
+    "category":"Magazine",
     "dosh":120,
     "stats":{
       "Magazine":"+15 rounds"
@@ -24,9 +26,10 @@
     "name":"Heavy Barrel",
     "description":"A reinforced barrel that improves projectile stability for long-range shots.",
     "slot":"barrel",
+    "category":"Barrel",
     "dosh":300,
     "stats":{
-      "Range":"+12%"
+      "Penetration":"+12%"
     }
   },
   {
@@ -34,6 +37,7 @@
     "name":"Muzzle Brake",
     "description":"Redirects propellant gases to counteract recoil. May increase muzzle flash/noise.",
     "slot":"muzzle",
+    "category":"Barrel",
     "dosh":180,
     "stats":{
       "Recoil":"-18%"
@@ -44,10 +48,11 @@
     "name":"Suppressor",
     "description":"Reduces firing sound and muzzle flash at the cost of range and slightly reduced damage at distances.",
     "slot":"muzzle",
+    "category":"Barrel",
     "dosh":220,
     "stats":{
       "Sound":"-100%",
-      "Range":"-5%"
+      "Penetration":"-5%"
     }
   },
   {
@@ -55,6 +60,7 @@
     "name":"Laser Pointer",
     "description":"Small laser to aid hip-fire accuracy and quick target acquisition.",
     "slot":"underbarrel",
+    "category":"Underbarrel",
     "dosh":80,
     "stats":{
       "Hip Accuracy":"+6%"
@@ -65,6 +71,7 @@
     "name":"Incendiary Rounds",
     "description":"Ammunition mod that swaps the primary fire mode's rounds for incendiary ones, changing its damage type from Ballistic to Heat.",
     "slot":"ammunition",
+    "category":"Ammunition",
     "dosh":250,
     "primaryDamageTypes":["Heat"],
     "stats":{
