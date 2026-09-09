@@ -445,9 +445,7 @@
       fields: [
          ['Reload Speed', 'reloadSpeed'],
          ['Fire Rate', 'fireRate'],
-         ['Recoil Rating', 'recoilRating'],
          ['Recoil Score', 'recoilScore'],
-         ['Accuracy Rating', 'accuracyRating'],
          ['Accuracy Score', 'accuracyScore'],
          ['Penetration', 'penetration'],
          ['Stumble Power', 'stumblePower'],
