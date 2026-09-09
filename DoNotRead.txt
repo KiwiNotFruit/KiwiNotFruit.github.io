@@ -146,6 +146,14 @@ PenetrationPower_Primary
 PenetrationPower_Secondary
 PenetrationPower_Tertiary
 
+ShockPower_Primary
+ShockPower_Secondary
+ShockPower_Tertiary
+
+SlowPower_Primary
+SlowPower_Secondary
+SlowPower_Tertiary
+
 6. RecoilPitchScale_Primary & RecoilYawScale_Primary — Recoil intensity
 
 Accuracy scale:
