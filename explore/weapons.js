@@ -180,6 +180,18 @@
     return known || value;
   }
 
+  function getWeaponModId(modRef){
+    if(typeof modRef === 'string') return modRef;
+    if(modRef && typeof modRef === 'object') return modRef.id || modRef.name || '';
+    return '';
+  }
+
+  function getWeaponModData(modRef){
+    const id = getWeaponModId(modRef);
+    if(id && modsById[id]) return modsById[id];
+    return (modRef && typeof modRef === 'object') ? modRef : null;
+  }
+
   // Categories available for a weapon, derived from its linked mods (mods.json "category"
   // field) and ordered by MOD_CATEGORY_ORDER (unknown categories sort last, alphabetically).
   // To override the order for a specific weapon, add a "modCategories" array to that
@@ -187,7 +199,8 @@
   function getWeaponModCategories(weapon){
     const present = new Set();
     for(const wm of (weapon.mods || [])){
-      const modData = modsById[wm.id] || wm;
+      const modData = getWeaponModData(wm);
+      if(!modData) continue;
       present.add(canonicalCategoryName(modData.category));
     }
     const order = Array.isArray(weapon.modCategories) && weapon.modCategories.length
@@ -269,17 +282,19 @@
     })();
 
     for(const m of (weapon.mods || [])){
-      const modData = modsById[m.id] || m;
+      const modId = getWeaponModId(m);
+      const modData = getWeaponModData(m);
+      if(!modId || !modData) continue;
       if(canonicalCategoryName(modData.category) !== activeCategory) continue;
-      listWrap.appendChild(buildModItemEl(weapon, card, m, modData, currentSelection));
+      listWrap.appendChild(buildModItemEl(weapon, card, modId, m, modData, currentSelection));
     }
   }
 
-  function buildModItemEl(weapon, card, m, modData, currentSelection){
+  function buildModItemEl(weapon, card, modId, m, modData, currentSelection){
     const mi = document.createElement('span');
     mi.className = 'mod-item';
     mi.tabIndex = 0;
-    mi.dataset.modId = m.id || m.name;
+    mi.dataset.modId = modId;
     if(modData && modData.slot) mi.dataset.slot = modData.slot;
 
     // Text label
@@ -288,7 +303,7 @@
     mi.appendChild(nameSpan);
 
     // small info link to open mods page (does not toggle selection)
-    if(m.link){
+    if(m && typeof m === 'object' && m.link){
       const info = document.createElement('a');
       info.href = m.link;
       info.target = '_blank';
@@ -310,7 +325,7 @@
     mi.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggleModForWeapon(weapon.id, mi.dataset.modId, card); } });
 
     // show short text if provided
-    if(m.short){
+    if(m && typeof m === 'object' && m.short){
       const short = document.createElement('span');
       short.className = 'mod-stats';
       short.textContent = m.short;
@@ -431,7 +446,7 @@
          ['Reload Speed', 'reloadSpeed'],
          ['Fire Rate', 'fireRate'],
          ['Recoil Avg', 'recoilAvg'],
-         ['Accuracy', 'Accuracy']
+         ['Accuracy', 'Accuracy'],
          ['Penetration', 'penetration'],
          ['Stumble Power', 'StumblePower'],
          ['Stun Power', 'StunPower'],
