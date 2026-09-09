@@ -158,6 +158,8 @@ RecoilPitchScale_Primary
 RecoilPitchScale_Secondary
 RecoilYawScale_Primary
 RecoilYawScale_Secondary
+
+(seperate)
 RecoilRecoveryTime_Primary
 RecoilRecoveryTime_Secondary
 
