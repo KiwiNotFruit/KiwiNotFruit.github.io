@@ -446,6 +446,7 @@
          ['Reload Speed', 'reloadSpeed'],
          ['Fire Rate', 'fireRate'],
          ['Recoil Score', 'recoilScore'],
+         ['Recoil Recovery Time', 'recoilRecoveryTime'],
          ['Accuracy Score', 'accuracyScore'],
          ['Penetration', 'penetration'],
          ['Stumble Power', 'stumblePower'],
