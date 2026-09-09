@@ -1,0 +1,191 @@
+Use this prompt style when kicking off Copilot coding agent:
+
+    Scope hard limits
+        “Only edit these files: explore/weapons.js, explore/weapons.css, explore/mods.json, explore/weapons.json, README.md.”
+    Execution limits
+        “Run tests/checks once at the end only.”
+        “No custom temporary test harness unless tests fail.”
+        “No repeated scans/diffs/status unless I ask.”
+    Output limits
+        “Give concise updates only at major milestones.”
+        “Do not run cleanup commands unless required.”
+    Stop condition
+        “After passing checks and committing, stop immediately.”
+
+Copy/paste guardrail prompt
+
+Use this before work starts:
+
+    Keep token/tool usage minimal.
+
+        Max 1 implementation pass, 1 verification pass.
+        No duplicate commands.
+        No custom jsdom test files unless absolutely required.
+        Run only: lint/typecheck/tests once at end.
+        Short progress updates (<=5 bullets).
+        Commit and stop when done.
+
+Low-Credit PR Mode (strict)
+
+Goal: implement the requested change with minimal Copilot/agent credit usage.
+
+Operating constraints:
+1) Keep execution lean
+- Do one implementation pass, then one verification pass.
+- Avoid exploratory rewrites or optional refactors.
+- If requirements are unclear, ask once, then proceed.
+
+2) Limit tool/command usage
+- Do not run duplicate commands.
+- Do not re-run the same check unless a relevant file changed after the prior run.
+- Prefer the smallest validating command set required for confidence.
+
+3) Testing policy
+- Run existing project checks only (once, at the end).
+- Do NOT create custom test harnesses, temporary test files, or ad-hoc frameworks unless I explicitly request them.
+- If no formal tests exist, do a brief targeted smoke check only.
+
+4) File scope discipline
+- Modify only files required by the task.
+- No opportunistic cleanup, formatting-only churn, or unrelated docs updates unless requested.
+
+5) Communication budget
+- Progress updates only at major milestones:
+  a) plan confirmed
+  b) changes complete
+  c) verification complete
+- Keep each update under 5 bullets.
+- Do not paste long logs unless I ask.
+
+6) Stop conditions
+- After checks pass and commit/PR is ready, stop.
+- Do not perform extra post-task steps (extra scans, repeated diffs/status, cleanup retries, memory writes) unless requested.
+
+7) Failure behavior
+- If blocked, report:
+  - exact blocker,
+  - 1–2 minimal options,
+  - your recommended option.
+- Wait for my decision before continuing.
+
+Deliverable format:
+- Summary: what changed (concise)
+- Files changed: list only
+- Verification run: exact commands run (once)
+- PR title + PR description (concise, no fluff)
+
+
+KF3 stats:
+Damage_Primary — Raw damage output
+Damage_Secondary
+
+PostFireDelay_Primary — Fire rate (most impactful for DPS)
+PostFireDelay_Secondary
+
+ReloadTotalTime_Primary — Reload time (affects sustained DPS)
+ReloadTotalTime_Secondary
+
+AmmoLoadedMax_Primary + AmmoTotalMax_Primary
+AmmoLoadedMax_Secondary + AmmoTotalMax_Secondary
+
+StumblePower_Primary
+StumblePower_Secondary
+StumblePower_Tertiary
+
+StunPower_Primary
+StunPower_Secondary
+StunPower_Tertiary
+
+ToxicPower_Primary
+ToxicPower_Secondary
+ToxicPower_Tertiary
+
+BleedPower_Primary
+BleedPower_Secondary
+BleedPower_Tertiary
+
+BurnPower_Primary
+BurnPower_Secondary
+BurnPower_Tertiary
+
+BurnPower_GroundEffect
+
+CorrosivePower_Primary
+CorrosivePower_Secondary
+CorrosivePower_Tertiary
+
+ConfusePower_Primary
+ConfusePower_Secondary
+ConfusePower_Tertiary
+
+EnfeeblePower_Primary
+EnfeeblePower_Secondary
+EnfeeblePower_Tertiary
+
+FreezePower_Primary
+FreezePower_Secondary
+FreezePower_Tertiary
+
+Healing_Primary
+Healing_Secondary
+Healing_Tertiary
+	
+KnockBack_Primary
+KnockBack_Secondary
+KnockBack_Tertiary
+
+KnockdownPower_Primary
+KnockdownPower_Secondary
+KnockdownPower_Tertiary
+
+PanicPower_Primary
+PanicPower_Secondary
+PanicPower_Tertiary
+
+PenetrationPower_Primary
+PenetrationPower_Secondary
+PenetrationPower_Tertiary
+
+6. RecoilPitchScale_Primary & RecoilYawScale_Primary — Recoil intensity
+
+Accuracy scale:
+Excellent — Tight grouping, minimal bloom
+Good — Manageable spread, reliable at range
+Neutral — Average accuracy, situational use
+Poor — High spread, difficult to land shots
+Very Poor — Heavy spray, close range only
+
+To have AI generate those qualitative descriptions automatically, you'd need to provide:
+
+Core Spread Data:
+
+MinimumSpreadX_Primary & MinimumSpreadY_Primary (base spread)
+MaximumSpreadX_Primary & MaximumSpreadY_Primary (max spread)
+SpreadIncreasePerShotX/Y_Primary (bloom per shot)
+SpreadDecayX/Y_Primary (how fast it recovers)
+
+Modifiers:
+
+CrouchSpreadModifier
+HipFireSpreadModifier
+MovingSpreadModifier
+SprintingSpreadModifier
+ZoomSpreadModifier
+
+Context:
+
+Range_Primary (effective range)
+PostFireDelay_Primary (fire rate — faster fire = more bloom stacks)
+AmmoLoadedMax_Primary (magazine size)
+
+
+
+Given this weapon data:
+- Base spread: 0.8
+- Max spread: 4.2
+- Bloom per shot: 0.3
+- Decay rate: 0.2
+- Range: 2500
+- Fire rate: 0.093s
+
+Classify accuracy as: Excellent/Good/Neutral/Poor/Very Poor
