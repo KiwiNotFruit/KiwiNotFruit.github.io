@@ -335,7 +335,7 @@
 
     const label = document.createElement('span');
     label.className = 'small-link';
-    label.textContent = 'Selected Mods:';
+    label.textContent = 'Mods:';
     wrap.appendChild(label);
 
     for(const id of sel){
