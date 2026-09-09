@@ -147,8 +147,8 @@
       main.appendChild(title);
       main.appendChild(desc);
       main.appendChild(fireModesWrap);
-      main.appendChild(modsWrap);
       main.appendChild(bonusWrap);
+      main.appendChild(modsWrap);
 
       card.appendChild(imgWrap);
       card.appendChild(main);
