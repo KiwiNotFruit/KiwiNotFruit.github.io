@@ -6,7 +6,7 @@
     "image":"X295 Wraith.jpg",
     "description":"Mid-range assault rifle",
     "class":"Commando",
-    "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430,"reloadSpeed":"2.9s","fireRate":"0.093s","penetration":5},
+    "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430,"reloadSpeed":"2.9s","fireRate":"0.093s","recoilRating":"Low","recoilScore":4750,"penetration":5,"accuracyRating":"Good","accuracyScore":12.2},
     "mods":[
       {"id":"red-dot-sight"},
       {"id":"extended-mag"},
