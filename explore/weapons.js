@@ -427,7 +427,7 @@
     },
     {
       className: 'fire-mode-detail-stats',
-      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Penetration', 'penetration'], ['Handling', 'handling'], ['Recoil', 'recoil']]
+      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Penetration', 'penetration'], ['Recoil Avg', 'recoilAvg']['Stumble Power', 'stumblePower']]
     }
   ];
 
