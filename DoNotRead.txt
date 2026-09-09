@@ -154,14 +154,32 @@ SlowPower_Primary
 SlowPower_Secondary
 SlowPower_Tertiary
 
-RecoilPitchScale_Primary
-RecoilPitchScale_Secondary
-RecoilYawScale_Primary
-RecoilYawScale_Secondary
-
-(seperate)
 RecoilRecoveryTime_Primary
 RecoilRecoveryTime_Secondary
+Impulse_Primary
+Impulse_Secondary
+ImpulseZOnly_Primary
+ImpulseZOnly_Secondary
+
+RECOIL CALCULATION FORMULA
+
+Stats needed:
+- Impulse_Primary (total kick force)
+- ImpulseZOnly_Primary (vertical component)
+- RecoilRecoveryTime_Primary (how fast it settles)
+
+Formula:
+recoilImpactScore = (Impulse_Primary + ImpulseZOnly_Primary) / RecoilRecoveryTime_Primary
+
+Rating Scale:
+- Very Low:  < 10,000
+- Low:       10,000 - 20,000
+- Moderate:  20,000 - 40,000
+- High:      40,000 - 60,000
+- Very High: > 60,000
+
+
+
 
 Accuracy scale:
 Excellent — Tight grouping, minimal bloom
