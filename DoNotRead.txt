@@ -154,7 +154,12 @@ SlowPower_Primary
 SlowPower_Secondary
 SlowPower_Tertiary
 
-6. RecoilPitchScale_Primary & RecoilYawScale_Primary — Recoil intensity
+RecoilPitchScale_Primary
+RecoilPitchScale_Secondary
+RecoilYawScale_Primary
+RecoilYawScale_Secondary
+RecoilRecoveryTime_Primary
+RecoilRecoveryTime_Secondary
 
 Accuracy scale:
 Excellent — Tight grouping, minimal bloom
