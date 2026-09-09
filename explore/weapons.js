@@ -427,7 +427,30 @@
     },
     {
       className: 'fire-mode-detail-stats',
-      fields: [['Reload Speed', 'reloadSpeed'], ['Fire Rate', 'fireRate'], ['Penetration', 'penetration'], ['Recoil Avg', 'recoilAvg']['Stumble Power', 'stumblePower']]
+      fields: [
+         ['Reload Speed', 'reloadSpeed'],
+         ['Fire Rate', 'fireRate'],
+         ['Recoil Avg', 'recoilAvg'],
+         ['Accuracy', 'Accuracy']
+         ['Penetration', 'penetration'],
+         ['Stumble Power', 'StumblePower'],
+         ['Stun Power', 'StunPower'],
+         ['Toxic Power', 'ToxicPower'],
+         ['Bleed Power', 'BleedPower'],
+         ['Burn Power', 'BurnPower'],
+         ['Burn Power (Ground Effect)', 'BurnPower_GroundEffect'],
+         ['Corrosive Power', 'CorrosivePower'],
+         ['Confuse Power', 'ConfusePower'],
+         ['Enfeeble Power', 'EnfeeblePower'],
+         ['Freeze Power', 'FreezePower'],
+         ['Healing', 'Healing'],
+         ['Knock Back', 'KnockBack'],
+         ['Knockdown Power', 'KnockdownPower'],
+         ['Panic Power', 'PanicPower'],
+         ['Penetration Power', 'PenetrationPower'],
+         ['Shock Power', 'ShockPower'],
+         ['Slow Power', 'SlowPower'],
+      ]
     }
   ];
 
