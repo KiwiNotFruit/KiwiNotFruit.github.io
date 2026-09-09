@@ -178,47 +178,23 @@ Rating Scale:
 - High:      40,000 - 60,000
 - Very High: > 60,000
 
+ACCURACY CALCULATION FORMULA
 
+Stats needed:
+- MinimumSpreadX/Y_Primary (base spread)
+- MaximumSpreadX/Y_Primary (max spread)
+- SpreadIncreasePerShotX/Y_Primary (bloom per shot)
+- SpreadDecayX/Y_Primary (recovery rate)
 
+Formula:
+1. Average X and Y values for each stat
+2. bloom_speed = SpreadIncrease × 10 (shots per second)
+3. recovery_rate = SpreadDecay (or 0.1 if zero)
+4. accuracyScore = (MinSpread + MaxSpread) + (bloom_speed / recovery_rate)
 
-Accuracy scale:
-Excellent — Tight grouping, minimal bloom
-Good — Manageable spread, reliable at range
-Neutral — Average accuracy, situational use
-Poor — High spread, difficult to land shots
-Very Poor — Heavy spray, close range only
-
-To have AI generate those qualitative descriptions automatically, you'd need to provide:
-
-Core Spread Data:
-
-MinimumSpreadX_Primary & MinimumSpreadY_Primary (base spread)
-MaximumSpreadX_Primary & MaximumSpreadY_Primary (max spread)
-SpreadIncreasePerShotX/Y_Primary (bloom per shot)
-SpreadDecayX/Y_Primary (how fast it recovers)
-
-Modifiers:
-
-CrouchSpreadModifier
-HipFireSpreadModifier
-MovingSpreadModifier
-SprintingSpreadModifier
-ZoomSpreadModifier
-
-Context:
-
-Range_Primary (effective range)
-PostFireDelay_Primary (fire rate — faster fire = more bloom stacks)
-AmmoLoadedMax_Primary (magazine size)
-
-
-
-Given this weapon data:
-- Base spread: 0.8
-- Max spread: 4.2
-- Bloom per shot: 0.3
-- Decay rate: 0.2
-- Range: 2500
-- Fire rate: 0.093s
-
-Classify accuracy as: Excellent/Good/Neutral/Poor/Very Poor
+Rating Scale:
+- Excellent: < 11.5 (tight, stable, minimal bloom)
+- Good:      11.5 - 23.0 (controlled spread)
+- Neutral:   23.0 - 34.5 (moderate spread, manageable bloom)
+- Poor:      34.5 - 46.0 (significant bloom, loose)
+- Very Poor: > 46.0 (extreme spread, hard to control)
