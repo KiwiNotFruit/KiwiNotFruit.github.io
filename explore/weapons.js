@@ -448,7 +448,7 @@
          ['Recoil Score', 'recoilScore'],
          ['Recoil Recovery Time', 'recoilRecoveryTime'],
          ['Accuracy Score', 'accuracyScore'],
-         ['Penetration', 'penetration'],
+         ['Penetration Power', 'penetrationPower'],
          ['Stumble Power', 'stumblePower'],
          ['Stun Power', 'stunPower'],
          ['Toxic Power', 'toxicPower'],
