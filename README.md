@@ -7,6 +7,11 @@ A simple information and guide website for Killing Floor 3.
 This site contains data, guides, and information related to Killing Floor 3.
 
 ---
+to do
+
+add comment weapons.json for detail stats attributes
+
+---
 
 ## Data pages (Weapons & Mods)
 
