@@ -463,7 +463,6 @@
          ['Knock Back', 'knockBack'],
          ['Knockdown Power', 'knockdownPower'],
          ['Panic Power', 'panicPower'],
-         ['Penetration Power', 'penetrationPower'],
          ['Shock Power', 'shockPower'],
          ['Slow Power', 'slowPower'],
       ]
