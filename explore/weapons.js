@@ -491,15 +491,19 @@
     const stats = document.createElement('div');
     stats.className = 'fire-mode-stats';
     for(const group of FIRE_MODE_STAT_GROUPS){
+      const isDetailGroup = group.className === 'fire-mode-detail-stats';
       const groupEl = document.createElement('div');
       groupEl.className = group.className;
       for(const [label, field] of group.fields){
+        const value = mode[field];
+        const missingValue = value === undefined || value === null || value === '';
+        if(isDetailGroup && missingValue) continue;
         const stat = document.createElement('span');
         stat.className = 'fire-mode-stat';
-        const value = mode[field];
-        stat.textContent = `${label}: ${value === undefined || value === null || value === '' ? '—' : value}`;
+        stat.textContent = `${label}: ${missingValue ? '—' : value}`;
         groupEl.appendChild(stat);
       }
+      if(isDetailGroup && !groupEl.childElementCount) continue;
       stats.appendChild(groupEl);
     }
     wrap.appendChild(stats);
