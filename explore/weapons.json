@@ -7,7 +7,7 @@
     "description":"Mid-range assault rifle",
     "class":"Commando",
     "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430,
-    "reloadSpeed":"2.9s","fireRate":"0.093s","recoilScore":"Low","recoilRecoveryTime":"0.42s","accuracyScore":"12.2 Good","penetrationPower":5},
+    "reloadSpeed":"2.9s","fireRate":"0.093s","recoilRecoveryTime":"0.42s","accuracyScore":"12.2 Good","penetrationPower":5},
     "mods":[
       {"id":"red-dot-sight"},
       {"id":"extended-mag"},
