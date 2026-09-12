@@ -162,7 +162,7 @@ Impulse_Secondary
 ImpulseZOnly_Primary
 ImpulseZOnly_Secondary
 
-RECOIL CALCULATION FORMULA (DONT KNOW HOW RECOIL IS CALCULATED YET)
+RECOIL CALCULATION FORMULA (DONT KNOW HOW RECOIL IS CALCULATED YET) THIS IS NOT IT
 
 Stats needed:
 - Impulse_Primary (total kick force)
