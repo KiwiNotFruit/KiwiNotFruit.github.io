@@ -73,7 +73,7 @@
       statsWrap.className = 'stats';
       if(m.stats){
         for(const [k,v] of Object.entries(m.stats)){
-          const s = document.createElement('span');
+          const s = document.createElement('div');
           s.className = 'stat';
           s.textContent = `${k}: ${v}`;
           statsWrap.appendChild(s);
