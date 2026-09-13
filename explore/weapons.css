@@ -101,7 +101,7 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .damage-type[data-damage-type="Ballistic" i] .damage-type-icon{background:#fae17d}
 .damage-type[data-damage-type="Cut" i] .damage-type-icon{background:#ffffff}
 .damage-type[data-damage-type="Biological" i] .damage-type-icon{background:#5cdb5c}
-.damage-type[data-damage-type="Electrical" i] .damage-type-icon{background:#1e90ff}
+.damage-type[data-damage-type="Electric" i] .damage-type-icon{background:#1e90ff}
 .damage-type[data-damage-type="Heat" i] .damage-type-icon{background:#ff4500}
 .damage-type[data-damage-type="Soundwave" i] .damage-type-icon{background:#9d4edd}
 .damage-type[data-damage-type="Acidic" i] .damage-type-icon{background:#b38b6d}
