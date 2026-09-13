@@ -45,6 +45,10 @@
     'Magazine','Pommel','Quiver','Riser','Sight','Underbarrel'
   ];
 
+  function isRecord(value){
+    return !!value && typeof value === 'object' && !Array.isArray(value);
+  }
+
   function loadSelections(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -61,9 +65,17 @@
         fetch('weapons.json'),
         fetch('mods.json')
       ]);
-      weapons = await wepRes.json();
-      mods = await modRes.json();
-      modsById = Object.fromEntries((mods||[]).map(m => [m.id, m]));
+      const [loadedWeapons, loadedMods] = await Promise.all([
+        wepRes.json(),
+        modRes.json()
+      ]);
+      weapons = Array.isArray(loadedWeapons) ? loadedWeapons.filter(isRecord) : [];
+      mods = Array.isArray(loadedMods) ? loadedMods.filter(isRecord) : [];
+      modsById = Object.fromEntries(
+        mods
+          .filter((m) => typeof m.id === 'string' && m.id)
+          .map((m) => [m.id, m])
+      );
     }catch(e){
       console.error('Failed to load weapons.json or mods.json', e);
       weapons = [];
