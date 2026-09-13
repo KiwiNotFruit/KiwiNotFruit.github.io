@@ -586,7 +586,7 @@
       const m = modsById[id];
       if(m && m.stats){
         for(const [k,v] of Object.entries(m.stats)){
-          bonuses.push(`${k} ${v}`);
+          bonuses.push({ key: k, value: v });
         }
       }
     }
@@ -596,11 +596,14 @@
     }
     const label = document.createElement('span');
     label.className = 'mod-bonuses-label';
-    label.textContent = 'Mod Bonuses: ';
+    label.textContent = 'Mod Bonuses:';
     bonusEl.appendChild(label);
     const text = document.createElement('span');
     text.className = 'mod-bonuses-text';
-    text.innerHTML = bonuses.map(b => escapeHtml(b)).join('<br>');
+    text.style.display = 'block';
+    text.innerHTML = bonuses
+      .map(({ key, value }) => `${escapeHtml(key)}: <span class="${statClass(value)}">${escapeHtml(value)}</span>`)
+      .join('<br>');
     bonusEl.appendChild(text);
     bonusEl.classList.add('has-bonuses');
   }
