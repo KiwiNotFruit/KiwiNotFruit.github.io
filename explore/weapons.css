@@ -124,6 +124,7 @@ h1{margin:0 0 14px 0;color:var(--accent)}
 .mod-bonuses{display:none;margin-top:8px;background:#1a0000;border:1px solid var(--accent);border-radius:6px;padding:6px 10px;color:#ffb3b3;font-size:0.9rem}
 .mod-bonuses.has-bonuses{display:block}
 .mod-bonuses-label{color:var(--accent);font-weight:700}
+.mod-bonuses-text{display:block}
 
 /* Collapsible, category-driven mods UI */
 .view-mods-btn{padding:6px 10px;border-radius:6px;border:1px solid #2a2a2a;background:#171717;color:var(--accent);font-weight:600;cursor:pointer;transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease}

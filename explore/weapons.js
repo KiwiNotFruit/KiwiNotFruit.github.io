@@ -600,7 +600,6 @@
     bonusEl.appendChild(label);
     const text = document.createElement('span');
     text.className = 'mod-bonuses-text';
-    text.style.display = 'block';
     text.innerHTML = bonuses
       .map(({ key, value }) => `${escapeHtml(key)}: <span class="${statClass(value)}">${escapeHtml(value)}</span>`)
       .join('<br>');
