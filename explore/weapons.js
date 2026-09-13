@@ -49,6 +49,13 @@
     return !!value && typeof value === 'object' && !Array.isArray(value);
   }
 
+  function statClass(value){
+    const s = String(value).trim();
+    if(/^\+/.test(s)) return 'stat-pos';
+    if(/^-/.test(s)) return 'stat-neg';
+    return 'stat-neutral';
+  }
+
   function loadSelections(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -508,7 +515,8 @@
         if(isDetailGroup && missingValue) continue;
         const stat = document.createElement('span');
         stat.className = 'fire-mode-stat';
-        stat.textContent = `${label}: ${missingValue ? '—' : value}`;
+        const renderedValue = missingValue ? '—' : String(value);
+        stat.innerHTML = `${escapeHtml(label)}: <span class="${statClass(renderedValue)}">${escapeHtml(renderedValue)}</span>`;
         groupEl.appendChild(stat);
       }
       if(isDetailGroup && !groupEl.childElementCount) continue;
