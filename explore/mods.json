@@ -1,13 +1,14 @@
 [
   {
-    "id":"red-dot-sight",
-    "name":"Red Dot Sight",
-    "description":"A compact optic that improves close-to-mid range aiming without obstructing the view.",
-    "slot":"optic",
-    "category":"Sight",
-    "dosh":150,
+    "id":"armor-piercing-rounds",
+    "name":"Armor Piercing Rounds",
+    "description":"Ammunition",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":270,
     "stats":{
-      "Zoom":"1.1x"
+      "-6% Accuracy",
+      "+18% Damage"
     }
   },
   {
