@@ -2,7 +2,7 @@
   {
     "id":"armor-piercing-rounds",
     "name":"Armor Piercing Rounds",
-    "description":"Ammunition",
+    "description":"Ammunition Type Mod.",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":270,
@@ -12,6 +12,21 @@
       "Damage": "+18%",
       "Penetration Power": "+8",
       "Stumble Affliction": "+70"
+    }
+  },
+ {
+    "id":"hollow-point-rounds",
+    "name":"Hollow Point Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":170,
+    "primaryDamageTypes":["Cut","Ballistic"],
+    "stats":{
+      "Accuracy": "-2%",
+      "Damage": "+15%",
+      "Penetration Power": "-1",
+      "Stun Affliction": "+70"
     }
   },
   {
