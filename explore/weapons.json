@@ -9,7 +9,7 @@
     "primary":{"damageTypes":["Ballistic"],"damage":86,"magazine":30,"capacity":430,
     "reloadSpeed":"2.9s","fireRate":"0.093s","penetrationPower":5},
     "mods":[
-      {"id":"red-dot-sight"},
+      {"id":"armor-piercing-rounds"},
       {"id":"extended-mag"},
       {"id":"incendiary-rounds"}
     ]
