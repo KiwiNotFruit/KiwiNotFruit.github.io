@@ -318,7 +318,7 @@
 
     // Text label
     const nameSpan = document.createElement('span');
-    nameSpan.textContent = `${canonicalCategoryName(modData.category)}: ${m.name || (modData && modData.name) || 'Unknown Mod'}`;
+    nameSpan.textContent = m.name || (modData && modData.name) || 'Unknown Mod';
     mi.appendChild(nameSpan);
 
     // small info link to open mods page (does not toggle selection)
@@ -377,7 +377,7 @@
       if(!m) continue;
       const tag = document.createElement('span');
       tag.className = 'selected-mod-pill';
-      tag.textContent = `${canonicalCategoryName(m.category)}: ${m.name}`;
+      tag.textContent = m.name;
       wrap.appendChild(tag);
     }
   }
