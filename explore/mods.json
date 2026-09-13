@@ -97,7 +97,7 @@
     "stats":{
       "Accuracy": "+7%",
       "Damage": "+11%",
-      "Bleed Affliction": "+25"
+      "Bleed Affliction": "+25",
       "Penetration Power": "+10"
     }
   },
@@ -112,8 +112,8 @@
     "stats":{
       "Accuracy": "+10%",
       "Damage": "+10%",
-      "Marked Damage": "+12%"
-      "Marked Duration": "+3 seconds"
+      "Marked Damage": "+12%",
+      "Marked Duration": "+3 seconds",
       "Stun Affliction": "+25"
     }
   },
