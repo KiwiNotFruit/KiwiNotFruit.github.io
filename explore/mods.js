@@ -15,6 +15,16 @@
   let page = 1;
   const perPage = 10;
 
+  function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g, ch => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[ch]));
+  }
+
   async function load(){
     try{
       const res = await fetch('/explore/mods.json');
@@ -72,12 +82,12 @@
       const statsWrap = document.createElement('div');
       statsWrap.className = 'stats';
       if(m.stats){
-        for(const [k,v] of Object.entries(m.stats)){
-          const s = document.createElement('div');
-          s.className = 'stat';
-          s.textContent = `${k}: ${v}`;
-          statsWrap.appendChild(s);
-        }
+        const s = document.createElement('div');
+        s.className = 'stat';
+        s.innerHTML = Object.entries(m.stats)
+          .map(([k,v]) => `${escapeHtml(k)}: ${escapeHtml(v)}`)
+          .join('<br>');
+        statsWrap.appendChild(s);
       }
 
       main.appendChild(title);
