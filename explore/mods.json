@@ -8,7 +8,10 @@
     "dosh":270,
     "primaryDamageTypes":["Force","Ballistic"],
     "stats":{
-      "Accuracy": "-6%"
+      "Accuracy": "-6%",
+      "Damage": "+18%",
+      "Penetration Power": "+8",
+      "Stumble Affliction": "+70"
     }
   },
   {
