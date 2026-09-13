@@ -10,6 +10,7 @@
     "reloadSpeed":"2.9s","fireRate":"0.093s","penetrationPower":5},
     "mods":[
       {"id":"armor-piercing-rounds"},
+      {"id":"hollow-point-rounds"},
       {"id":"extended-mag"},
       {"id":"incendiary-rounds"}
     ]
