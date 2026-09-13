@@ -580,7 +580,7 @@
     bonusEl.appendChild(label);
     const text = document.createElement('span');
     text.className = 'mod-bonuses-text';
-    text.textContent = bonuses.join(', ');
+    text.innerHTML = bonuses.map(b => escapeHtml(b)).join('<br>');
     bonusEl.appendChild(text);
     bonusEl.classList.add('has-bonuses');
   }
