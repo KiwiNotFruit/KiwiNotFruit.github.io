@@ -12,7 +12,12 @@
       {"id":"armor-piercing-rounds"},
       {"id":"hollow-point-rounds"},
       {"id":"extended-mag"},
-      {"id":"incendiary-rounds"}
+      {"id":"incendiary-rounds"},
+      {"id":"overpressure-rounds"},
+      {"id":"electric-rounds"},
+      {"id":"match-grade-rounds"},
+      {"id":"polymer-tip-rounds"},
+      {"id":"sonic-tracer-rounds"}
     ]
   },
   {
