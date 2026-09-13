@@ -25,6 +25,13 @@
     }[ch]));
   }
 
+  function statClass(value){
+    const s = String(value).trim();
+    if(/^\+/.test(s)) return 'stat-pos';
+    if(/^-/.test(s)) return 'stat-neg';
+    return 'stat-neutral';
+  }
+
   async function load(){
     try{
       const res = await fetch('/explore/mods.json');
@@ -85,7 +92,7 @@
         const s = document.createElement('div');
         s.className = 'stat';
         s.innerHTML = Object.entries(m.stats)
-          .map(([k,v]) => `${escapeHtml(k)}: ${escapeHtml(v)}`)
+          .map(([k,v]) => `${escapeHtml(k)}: <span class="${statClass(v)}">${escapeHtml(v)}</span>`)
           .join('<br>');
         statsWrap.appendChild(s);
       }

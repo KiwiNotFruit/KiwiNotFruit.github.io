@@ -49,6 +49,13 @@
     return !!value && typeof value === 'object' && !Array.isArray(value);
   }
 
+  function statClass(value){
+    const s = String(value).trim();
+    if(/^\+/.test(s)) return 'stat-pos';
+    if(/^-/.test(s)) return 'stat-neg';
+    return 'stat-neutral';
+  }
+
   function loadSelections(){
     try{
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -508,7 +515,8 @@
         if(isDetailGroup && missingValue) continue;
         const stat = document.createElement('span');
         stat.className = 'fire-mode-stat';
-        stat.textContent = `${label}: ${missingValue ? '—' : value}`;
+        const renderedValue = missingValue ? '—' : String(value);
+        stat.innerHTML = `${escapeHtml(label)}: <span class="${statClass(renderedValue)}">${escapeHtml(renderedValue)}</span>`;
         groupEl.appendChild(stat);
       }
       if(isDetailGroup && !groupEl.childElementCount) continue;
@@ -578,7 +586,7 @@
       const m = modsById[id];
       if(m && m.stats){
         for(const [k,v] of Object.entries(m.stats)){
-          bonuses.push(`${k} ${v}`);
+          bonuses.push({ key: k, value: v });
         }
       }
     }
@@ -588,11 +596,14 @@
     }
     const label = document.createElement('span');
     label.className = 'mod-bonuses-label';
-    label.textContent = 'Mod Bonuses: ';
+    label.textContent = 'Mod Bonuses:';
     bonusEl.appendChild(label);
     const text = document.createElement('span');
     text.className = 'mod-bonuses-text';
-    text.innerHTML = bonuses.map(b => escapeHtml(b)).join('<br>');
+    text.style.display = 'block';
+    text.innerHTML = bonuses
+      .map(({ key, value }) => `${escapeHtml(key)}: <span class="${statClass(value)}">${escapeHtml(value)}</span>`)
+      .join('<br>');
     bonusEl.appendChild(text);
     bonusEl.classList.add('has-bonuses');
   }
