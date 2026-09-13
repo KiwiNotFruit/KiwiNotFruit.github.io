@@ -6,7 +6,7 @@
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":270,
-    "primaryDamageTypes":["Force"],
+    "primaryDamageTypes":["Force","Ballistic"],
     "stats":{
       "Accuracy": "-6%"
     }
@@ -74,7 +74,7 @@
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":250,
-    "primaryDamageTypes":["Heat"],
+    "primaryDamageTypes":["Heat","Ballistic"],
     "stats":{
       "Damage Type":"Heat"
     }
