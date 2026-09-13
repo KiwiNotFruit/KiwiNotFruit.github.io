@@ -30,6 +30,35 @@
     }
   },
   {
+    "id":"incendiary-rounds",
+    "name":"Incendiary Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":300,
+    "primaryDamageTypes":["Heat","Ballistic"],
+    "stats":{
+      "Accuracy": "-4%",
+      "Damage": "+20%",
+      "Burn Affliction": "+80",
+      "Panic Affliction": "+40"
+    }
+  },
+ {
+    "id":"overpressure-rounds",
+    "name":"Overpressure Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":200,
+    "primaryDamageTypes":["Soundwave","Force"],
+    "stats":{
+      "Accuracy": "-14%",
+      "Damage": "+25%",
+      "Knockdown Affliction": "+40"
+    }
+  },
+  {
     "id":"extended-mag",
     "name":"Extended Mag",
     "description":"Increases magazine capacity allowing longer sustained fire before reload.",
@@ -83,18 +112,6 @@
     "dosh":80,
     "stats":{
       "Hip Accuracy":"+6%"
-    }
-  },
-  {
-    "id":"incendiary-rounds",
-    "name":"Incendiary Rounds",
-    "description":"Ammunition mod that swaps the primary fire mode's rounds for incendiary ones, changing its damage type from Ballistic to Heat.",
-    "slot":"ammunition",
-    "category":"Ammunition",
-    "dosh":250,
-    "primaryDamageTypes":["Heat","Ballistic"],
-    "stats":{
-      "Damage Type":"Heat"
     }
   }
 ]
