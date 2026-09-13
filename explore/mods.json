@@ -6,6 +6,7 @@
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":270,
+    "primaryDamageTypes":["Force"],
     "stats":{
       "Accuracy": "-6%"
     }
