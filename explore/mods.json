@@ -7,7 +7,7 @@
     "category":"Ammunition",
     "dosh":270,
     "stats":{
-      "-6% Accuracy"
+      "Accuracy":" -6%"
     }
   },
   {
