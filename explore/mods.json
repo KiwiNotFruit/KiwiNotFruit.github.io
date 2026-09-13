@@ -58,6 +58,65 @@
       "Knockdown Affliction": "+40"
     }
   },
+ {
+    "id":"electric-rounds",
+    "name":"Electric Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":265,
+    "primaryDamageTypes":["Electric","Ballistic"],
+    "stats":{
+      "Accuracy": "+10%",
+      "Damage": "+10%",
+      "Shock Affliction": "+50"
+    }
+  },
+ {
+    "id":"match-grade-rounds",
+    "name":"Match Grade Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":275,
+    "primaryDamageTypes":["Soundwave","Ballistic"],
+    "stats":{
+      "Accuracy": "+25%",
+      "Damage": "+5%",
+      "Stumble Affliction": "+60"
+    }
+  },
+ {
+    "id":"polymer-tip-rounds",
+    "name":"Polymer Tip Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":175,
+    "primaryDamageTypes":["Cut","Ballistic"],
+    "stats":{
+      "Accuracy": "+7%",
+      "Damage": "+11%",
+      "Bleed Affliction": "+25"
+      "Penetration Power": "+10"
+    }
+  },
+ {
+    "id":"sonic-tracer-rounds",
+    "name":"Sonic Tracer Rounds",
+    "description":"Ammunition Type Mod.",
+    "slot":"ammunition",
+    "category":"Ammunition",
+    "dosh":310,
+    "primaryDamageTypes":["Soundwave","Ballistic"],
+    "stats":{
+      "Accuracy": "+10%",
+      "Damage": "+10%",
+      "Marked Damage": "+12%"
+      "Marked Duration": "+3 seconds"
+      "Stun Affliction": "+25"
+    }
+  },
   {
     "id":"extended-mag",
     "name":"Extended Mag",
