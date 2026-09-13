@@ -1,3 +1,24 @@
+List of Agent Requirements:
+-No feedback or changelog after finishing a task and PR. Only exception if you have further ideas/updates that may improve the code, website or (G)UI.
+-You may only Read, Search, Check, Compare and Edit/Change files. Nothing more.
+-Run tests/checks once at the end only.
+-No custom temporary test harness unless tests fail.
+-Do not run cleanup commands unless required.
+-No repeated scans/diffs/status
+-After passing checks and committing, stop immediately and you may only give feedback if needed for future changes.
+-Keep token/tool usage minimal.
+-Do not re-run the same check unless a relevant file changed after the prior run.
+-Do not perform extra post-task steps (extra scans, repeated diffs/status, cleanup retries, memory writes) unless requested.
+
+
+
+
+
+
+
+
+
+
 Use this prompt style when kicking off Copilot coding agent:
 
     Scope hard limits
