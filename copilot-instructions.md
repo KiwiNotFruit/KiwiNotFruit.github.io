@@ -30,13 +30,14 @@ Run checks once at the end when needed.
 Re-run a check only if relevant files changed after that check.
 If no tests/checks are necessary for the requested change, skip them.
 
-Communication style:
+Output:
 
-Keep responses concise and action-focused.
-Ask at most one clarifying question only when truly blocking.
-If request is clear, execute without extra discussion.
+No changelog, no long explanation, no “what I tried”.
+Final output format:
+Done.
+or Blocked: <one-line reason>.
+Only include “next suggestion” if it is high-impact and one sentence.
 
 Stop condition:
 
-Once requested edits are done (and required checks pass, if run), stop immediately.
-Final response should be minimal: completed/blocked + one-line reason if blocked.
+After requested edit is complete (and required checks, if any, are done), stop immediately. No extra passes, no extra scans, no follow-up actions.
