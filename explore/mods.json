@@ -117,6 +117,30 @@
       "Stun Affliction": "+25"
     }
   },
+ {
+    "id":"compensator",
+    "name":"Compensator",
+    "description":"Barrel Type Mod.",
+    "slot":"barrel",
+    "category":"Barrel",
+    "dosh":95,
+    "stats":{
+      "Recoil": "-20%"
+    }
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     "id":"extended-mag",
     "name":"Extended Mag",
