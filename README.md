@@ -10,6 +10,7 @@ This site contains data, guides, and information related to Killing Floor 3.
 to do
 
 weapons.json stats need code change in .js file for recoil being negative value so shows red.
+Values of different mods need to be updated to merge together like x2 accuracy on different mods and also update base stats.
 
 ---
 
