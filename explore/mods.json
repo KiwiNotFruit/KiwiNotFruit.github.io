@@ -148,7 +148,7 @@
     "dosh":340,
     "stats":{
       "Accuracy": "+12%",
-      "Recoil": "+15%",
+      "Recoil": "-15%",
       "Zed Time Gain Multiplier": "+50"
     }
   },
