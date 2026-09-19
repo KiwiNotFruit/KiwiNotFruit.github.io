@@ -207,6 +207,10 @@
     "slot":"underbarrel",
     "category":"Underbarrel",
     "dosh":590,
+    "stats":{
+      "Accuracy": "+8%",
+      "Effective Range": "+33%"
+    }
   },
 
 
