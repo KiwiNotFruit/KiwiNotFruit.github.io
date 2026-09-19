@@ -18,7 +18,14 @@
       {"id":"match-grade-rounds"},
       {"id":"polymer-tip-rounds"},
       {"id":"sonic-tracer-rounds"},
-      {"id":"compensator"}
+      {"id":"compensator"},
+      {"id":"muzzle-brake"},
+      {"id":"suppressor"},
+      {"id":"ginger-snap-muzzle-brake"},
+      {"id":"enhanced-foregrip"},
+      {"id":"laser-sight"},
+      {"id":"uv-light"},
+      {"id":"volter-shock"},
     ]
   },
   {
