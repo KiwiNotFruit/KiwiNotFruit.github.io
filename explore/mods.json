@@ -165,10 +165,49 @@
       "Stumble Affliction": "+8"
     }
   },
-
-
-
-
+ {
+    "id":"enhanced-foregrip",
+    "name":"Enhanced Foregrip",
+    "description":"Underbarrel Type Mod.",
+    "slot":"underbarrel",
+    "category":"Underbarrel",
+    "dosh":75,
+    "stats":{
+      "Accuracy": "+8%",
+      "Recoil": "-15%"
+    }
+  },
+ {
+    "id":"laser-sight",
+    "name":"Laser Sight",
+    "description":"Underbarrel Type Mod.",
+    "slot":"underbarrel",
+    "category":"Underbarrel",
+    "dosh":95,
+    "stats":{
+      "Accuracy": "+12%"
+    }
+  },
+ {
+    "id":"uv-light",
+    "name":"UV Light",
+    "description":"Underbarrel Type Mod.",
+    "slot":"underbarrel",
+    "category":"Underbarrel",
+    "dosh":200,
+    "stats":{
+      "Accuracy": "+8%",
+      "Effective Range": "+33%"
+    }
+  },
+ {
+    "id":"volter-shock",
+    "name":"Volter Shock",
+    "description":"Underbarrel Type Mod.",
+    "slot":"underbarrel",
+    "category":"Underbarrel",
+    "dosh":590
+  },
 
 
 
