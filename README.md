@@ -9,7 +9,7 @@ This site contains data, guides, and information related to Killing Floor 3.
 ---
 to do
 
-add comment weapons.json for detail stats attributes
+weapons.json stats need code change in .js file for recoil being negative value so shows red.
 
 ---
 
