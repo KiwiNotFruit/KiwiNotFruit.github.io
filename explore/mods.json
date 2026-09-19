@@ -206,7 +206,8 @@
     "description":"Underbarrel Type Mod.",
     "slot":"underbarrel",
     "category":"Underbarrel",
-    "dosh":590
+    "dosh":590,
+    "stats":{}
   },
 
 
