@@ -2,7 +2,7 @@
   {
     "id":"armor-piercing-rounds",
     "name":"Armor Piercing Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":270,
@@ -17,7 +17,7 @@
  {
     "id":"hollow-point-rounds",
     "name":"Hollow Point Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":170,
@@ -32,7 +32,7 @@
   {
     "id":"incendiary-rounds",
     "name":"Incendiary Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":300,
@@ -47,7 +47,7 @@
  {
     "id":"overpressure-rounds",
     "name":"Overpressure Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":200,
@@ -61,7 +61,7 @@
  {
     "id":"electric-rounds",
     "name":"Electric Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":265,
@@ -75,7 +75,7 @@
  {
     "id":"match-grade-rounds",
     "name":"Match Grade Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":275,
@@ -89,7 +89,7 @@
  {
     "id":"polymer-tip-rounds",
     "name":"Polymer Tip Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":175,
@@ -104,7 +104,7 @@
  {
     "id":"sonic-tracer-rounds",
     "name":"Sonic Tracer Rounds",
-    "description":"Ammunition Type Mod.",
+    "description":"Ammunition",
     "slot":"ammunition",
     "category":"Ammunition",
     "dosh":310,
@@ -120,7 +120,7 @@
  {
     "id":"compensator",
     "name":"Compensator",
-    "description":"Barrel Type Mod.",
+    "description":"Barrel",
     "slot":"barrel",
     "category":"Barrel",
     "dosh":95,
@@ -131,7 +131,7 @@
  {
     "id":"muzzle-brake",
     "name":"Muzzle Brake",
-    "description":"Barrel Type Mod.",
+    "description":"Barrel",
     "slot":"barrel",
     "category":"Barrel",
     "dosh":130,
@@ -142,7 +142,7 @@
  {
     "id":"suppressor",
     "name":"Suppressor",
-    "description":"Barrel Type Mod.",
+    "description":"Barrel",
     "slot":"barrel",
     "category":"Barrel",
     "dosh":340,
@@ -155,7 +155,7 @@
  {
     "id":"ginger-snap-muzzle-brake",
     "name":"Ginger Snap Muzzle Brake",
-    "description":"Barrel Type Mod.",
+    "description":"Barrel",
     "slot":"barrel",
     "category":"Barrel",
     "dosh":180,
@@ -168,7 +168,7 @@
  {
     "id":"enhanced-foregrip",
     "name":"Enhanced Foregrip",
-    "description":"Underbarrel Type Mod.",
+    "description":"Underbarrel",
     "slot":"underbarrel",
     "category":"Underbarrel",
     "dosh":75,
@@ -180,7 +180,7 @@
  {
     "id":"laser-sight",
     "name":"Laser Sight",
-    "description":"Underbarrel Type Mod.",
+    "description":"Underbarrel",
     "slot":"underbarrel",
     "category":"Underbarrel",
     "dosh":95,
@@ -191,7 +191,7 @@
  {
     "id":"uv-light",
     "name":"UV Light",
-    "description":"Underbarrel Type Mod.",
+    "description":"Underbarrel",
     "slot":"underbarrel",
     "category":"Underbarrel",
     "dosh":200,
@@ -203,7 +203,7 @@
  {
     "id":"volter-shock",
     "name":"Volter Shock",
-    "description":"Underbarrel Type Mod.",
+    "description":"Underbarrel",
     "slot":"underbarrel",
     "category":"Underbarrel",
     "dosh":590,
