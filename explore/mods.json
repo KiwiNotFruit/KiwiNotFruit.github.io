@@ -244,29 +244,6 @@
     }
   },
   {
-    "id":"muzzle-brake",
-    "name":"Muzzle Brake",
-    "description":"Redirects propellant gases to counteract recoil. May increase muzzle flash/noise.",
-    "slot":"muzzle",
-    "category":"Barrel",
-    "dosh":180,
-    "stats":{
-      "Recoil":"-18%"
-    }
-  },
-  {
-    "id":"suppressor",
-    "name":"Suppressor",
-    "description":"Reduces firing sound and muzzle flash at the cost of range and slightly reduced damage at distances.",
-    "slot":"muzzle",
-    "category":"Barrel",
-    "dosh":220,
-    "stats":{
-      "Sound":"-100%",
-      "Penetration":"-5%"
-    }
-  },
-  {
     "id":"laser-pointer",
     "name":"Laser Pointer",
     "description":"Small laser to aid hip-fire accuracy and quick target acquisition.",
