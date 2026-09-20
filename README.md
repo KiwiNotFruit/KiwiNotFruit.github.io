@@ -14,7 +14,7 @@ to do
 
 - check penetration power on ginger snap muzzle is using percentage instead of flat, suspiscious
 
-
+- Sort the mod categories from left to right in weapons&mods html or css
 
 
 
