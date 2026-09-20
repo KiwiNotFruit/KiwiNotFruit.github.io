@@ -17,7 +17,7 @@ mod cat and stats:
 - Sort the mod categories from left to right in weapons&mods html or css
 - reset selections once page refreshed
 - Values of different mods need to be combined, updated to merge together like x2 accuracy on different mods and also update base stats.
-- 
+- thin line between stats and categories (just not connecting with the border, leave some room inbetween)
 
 
 ---
