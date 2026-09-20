@@ -20,6 +20,9 @@ mod cat and stats:
 - thin line between stats and categories (just not connecting with the border, leave some room inbetween)
 
 
+modsoonly:
+leave an option to leave description empty
+
 ---
 
 ## Data pages (Weapons & Mods)
