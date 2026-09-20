@@ -11,7 +11,6 @@
     "mods":[
       {"id":"armor-piercing-rounds"},
       {"id":"hollow-point-rounds"},
-      {"id":"extended-mag"},
       {"id":"incendiary-rounds"},
       {"id":"overpressure-rounds"},
       {"id":"electric-rounds"},
