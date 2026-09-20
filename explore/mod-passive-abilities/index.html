@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../weapons.css">
   <style>
     .weapon-desc { color: #cfcfcf !important; }
-    .passive-source { color: #ff2b2b; font-weight: 600; margin-top: 6px; }
   </style>
 </head>
 <body>
@@ -39,15 +38,11 @@
           const h2 = document.createElement('h2');
           h2.textContent = p.name;
           title.appendChild(h2);
-          const source = document.createElement('div');
-          source.className = 'passive-source';
-          source.textContent = p.source || '';
           const desc = document.createElement('div');
           desc.className = 'weapon-desc';
           desc.style.marginTop = '6px';
           desc.textContent = p.description || '';
           main.appendChild(title);
-          if(p.source) main.appendChild(source);
           main.appendChild(desc);
           card.appendChild(main);
           listEl.appendChild(card);
