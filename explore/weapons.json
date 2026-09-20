@@ -25,7 +25,17 @@
       {"id":"enhanced-foregrip"},
       {"id":"laser-sight"},
       {"id":"uv-light"},
-      {"id":"volter-shock"}
+      {"id":"volter-shock"},
+      {"id":"aos-sight"},
+      {"id":"red-dot"},
+      {"id":"reflex-sight"},
+      {"id":"c4mi-sight"},
+      {"id":"sonar-sight"},
+      {"id":"drum-mag"},
+      {"id":"extended-mag"},
+      {"id":"lightweight-mag"},
+      {"id":"fast-action-receiver"},
+      {"id":"heavy-frame-receiver"}
     ]
   },
   {
