@@ -32,10 +32,6 @@
     "description": "Deal 5% more damage to Bosses."
   },
   {
-    "name": "Blood Transfusion",
-    "description": "Regenerate 1 Health per second when below 25% HP."
-  },
-  {
     "name": "Boss Buffer",
     "description": "Damage from Bosses is reduced by 5%."
   },
