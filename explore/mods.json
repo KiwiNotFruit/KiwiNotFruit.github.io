@@ -211,47 +211,132 @@
       "Volter Shock": "Added Fire Mode"
     }
   },
-
-
-
-
-
-
-
-
-
-
-  {
-    "id":"extended-mag",
-    "name":"Extended Mag",
-    "description":"Increases magazine capacity allowing longer sustained fire before reload.",
+ {
+    "id":"aos-sight",
+    "name":"AOS Sight",
+    "description":"Sight",
+    "slot":"sight",
+    "category":"Sight",
+    "dosh":260,
+    "stats":{
+      "Accuracy": "+39%",
+      "Recoil": "-54%",
+      "Zoom Crit Damage": "+10%"
+    }
+  },
+ {
+    "id":"red-dot",
+    "name":"Red Dot",
+    "description":"Sight",
+    "slot":"sight",
+    "category":"Sight",
+    "dosh":200,
+    "stats":{
+      "Accuracy": "+10%",
+      "Recoil": "-34%",
+      "Zoom Crit Damage": "+5%"
+    }
+  },
+ {
+    "id":"reflex-sight",
+    "name":"Reflex Sight",
+    "description":"Sight",
+    "slot":"sight",
+    "category":"Sight",
+    "dosh":170,
+    "stats":{
+      "Accuracy": "+8%",
+      "Handling": "+50%",
+      "Recoil": "-7%",
+      "Zoom Crit Damage": "+3%"
+    }
+  },
+   {
+    "id":"c4mi-sight",
+    "name":"C4mi Sight",
+    "description":"Sight",
+    "slot":"sight",
+    "category":"Sight",
+    "dosh":220,
+    "stats":{
+      "Accuracy": "+17%",
+      "Recoil": "-17%",
+      "Zoom Crit Damage": "+8%"
+    }
+  },
+   {
+    "id":"sonar-sight",
+    "name":"Sonar Sight",
+    "description":"Sight",
+    "slot":"sight",
+    "category":"Sight",
+    "dosh":440,
+    "stats":{
+      "Accuracy": "+43%",
+      "Recoil": "-40%",
+      "Zoom Crit Damage": "+20%"
+    }
+  },
+   {
+    "id":"drum-mag",
+    "name":"Drum Mag",
+    "description":"Magazine",
     "slot":"magazine",
     "category":"Magazine",
-    "dosh":120,
+    "dosh":560,
     "stats":{
-      "Magazine":"+15 rounds"
+      "Mag Size": "+20",
+      "Handling": "-10%",
+      "Recoil": "-10%",
+      "Reload Speed": "-6%"
     }
   },
-  {
-    "id":"heavy-barrel",
-    "name":"Heavy Barrel",
-    "description":"A reinforced barrel that improves projectile stability for long-range shots.",
-    "slot":"barrel",
-    "category":"Barrel",
-    "dosh":300,
+   {
+    "id":"extended-mag",
+    "name":"Extended Mag",
+    "description":"Magazine",
+    "slot":"magazine",
+    "category":"Magazine",
+    "dosh":330,
     "stats":{
-      "Penetration":"+12%"
+      "Mag Size": "+10"
     }
   },
-  {
-    "id":"laser-pointer",
-    "name":"Laser Pointer",
-    "description":"Small laser to aid hip-fire accuracy and quick target acquisition.",
-    "slot":"underbarrel",
-    "category":"Underbarrel",
-    "dosh":80,
+   {
+    "id":"lightweight-mag",
+    "name":"Lightweight Mag",
+    "description":"Magazine",
+    "slot":"magazine",
+    "category":"Magazine",
+    "dosh":55,
     "stats":{
-      "Hip Accuracy":"+6%"
+      "Mag Size": "-5",
+      "Reload Speed": "+20%"
+    }
+  },
+   {
+    "id":"fast-action-receiver",
+    "name":"Fast Action Receiver",
+    "description":"Internal",
+    "slot":"internal",
+    "category":"Internal",
+    "dosh":650,
+    "stats":{
+      "Damage": "+10%",
+      "Fire Rate": "+24%"
+    }
+  },
+   {
+    "id":"heavy-frame-receiver",
+    "name":"Heavy Frame Receiver",
+    "description":"Internal",
+    "slot":"internal",
+    "category":"Internal",
+    "dosh":550,
+    "stats":{
+      "Damage": "+35%",
+      "Fire Rate": "-11%",
+      "Recoil": "+9%"
     }
   }
 ]
