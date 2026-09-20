@@ -21,7 +21,7 @@ mod cat and stats:
 
 
 modsoonly:
-leave an option to leave description empty
+leave an option to leave description empty or if there is a desc. make the text slightly darker so it can be distinct
 
 ---
 
